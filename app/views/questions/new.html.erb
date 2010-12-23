@@ -1,0 +1,9 @@
+<div id="content">
+	<%= form_for(@question) do |f| %>
+		<h3>Question</h3>
+		<%= f.text_area :body %>
+		<h3>Topic</h3>
+		<%= text_field_tag :topic, {}, :autocomplete => autocomplete_topic_name_topics_path, :class => "autocomplete" %>
+		<%= f.submit "Send", :class => "submit" %>
+	<% end %>
+</div>

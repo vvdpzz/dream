@@ -1,0 +1,16 @@
+<div id="content">
+	<%= form_tag({:controller => "topics", :action => "create"}, :remote => true, :id => "new_topic") do %>
+		<%= text_field_tag :topic, {}, :autocomplete => autocomplete_topic_name_topics_path, :class => "autocomplete" %>
+		<%= submit_tag "Add Topic", :class => "submit" %>
+	<% end %>
+	<div id="topics" class="clearfix">
+		<%= render :partial => "partials/topic", :collection => @user.topics %>
+	</div>
+	<%= form_for(@message = current_user.messages.build, :remote => true) do |f| %>
+		<%= f.text_area :body %>
+		<%= f.submit "Send", :class => "submit" %>
+	<% end %>
+	<div id="messages">
+		<%= render :partial => "partials/message", :collection => @user.messages %>
+	</div>
+</div>

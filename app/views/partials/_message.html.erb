@@ -1,0 +1,9 @@
+<%= div_for message do %>
+	<div class="user_summary">
+		<span class="username"><%= message.user.name %></span>
+		<span class="timestamp"><%= message.created_at.strftime("%l:%M %p").downcase %></span>
+	</div>
+	<div class="excerpt">
+		<%= message.body %>
+	</div>
+<% end %>

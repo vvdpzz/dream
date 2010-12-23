@@ -1,0 +1,8 @@
+<%= div_for topic do %>
+<div class="topic_outer">
+	<div class="topic_inner">
+		<%= topic.name %>
+	</div>
+	<%= link_to '', topic, :method => :delete, :remote => true, :class => "close-button visible" %>
+</div>
+<% end %>

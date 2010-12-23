@@ -1,0 +1,6 @@
+<div id="content">
+	<h1>Here's a question you might be able to answer...</h1>
+	<div class="questions" class="clearfix">
+		<%= render :partial => "partials/question", :collection => current_user.related_questions %>
+	</div>
+</div>
