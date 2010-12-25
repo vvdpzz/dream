@@ -1,5 +1,7 @@
 class QuestionsController < ApplicationController
     
+    before_filter :authenticate_user!
+    
     def new
         @question = current_user.questions.build
     end

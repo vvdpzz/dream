@@ -97,5 +97,16 @@ class Topic
         end
         return brothers.uniq
     end
+    
+    # return no parents no children
+    def self.nopnoc
+        topics = []
+        Topic.all.each do |topic|
+            if !topic.parents.present? and !topic.children.present?
+                topics << topic
+            end
+        end
+        return topics
+    end
 
 end
