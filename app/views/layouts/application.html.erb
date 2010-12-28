@@ -11,6 +11,7 @@
 <div id="container">
 	<div id="header">
 		<% if user_signed_in? %>
+			<%= link_to "Topics", topics_path %> | 
 			<%= link_to "Home", questions_path %> | 
 			<%= link_to "Ask Question", new_question_path %> | 
 			<%= link_to "Questions You've Asked", asked_path %> | 

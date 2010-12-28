@@ -1,0 +1,61 @@
+(in /Users/vvdpzz/dream)
+                         asked        /questions/asked(.:format)                                             {:action=>"asked", :controller=>"questions"}
+                      answered        /questions/answered(.:format)                                          {:action=>"answered", :controller=>"questions"}
+      question_answer_comments GET    /questions/:question_id/answers/:answer_id/comments(.:format)          {:action=>"index", :controller=>"comments"}
+                               POST   /questions/:question_id/answers/:answer_id/comments(.:format)          {:action=>"create", :controller=>"comments"}
+   new_question_answer_comment GET    /questions/:question_id/answers/:answer_id/comments/new(.:format)      {:action=>"new", :controller=>"comments"}
+  edit_question_answer_comment GET    /questions/:question_id/answers/:answer_id/comments/:id/edit(.:format) {:action=>"edit", :controller=>"comments"}
+       question_answer_comment GET    /questions/:question_id/answers/:answer_id/comments/:id(.:format)      {:action=>"show", :controller=>"comments"}
+                               PUT    /questions/:question_id/answers/:answer_id/comments/:id(.:format)      {:action=>"update", :controller=>"comments"}
+                               DELETE /questions/:question_id/answers/:answer_id/comments/:id(.:format)      {:action=>"destroy", :controller=>"comments"}
+              question_answers GET    /questions/:question_id/answers(.:format)                              {:action=>"index", :controller=>"answers"}
+                               POST   /questions/:question_id/answers(.:format)                              {:action=>"create", :controller=>"answers"}
+           new_question_answer GET    /questions/:question_id/answers/new(.:format)                          {:action=>"new", :controller=>"answers"}
+          edit_question_answer GET    /questions/:question_id/answers/:id/edit(.:format)                     {:action=>"edit", :controller=>"answers"}
+               question_answer GET    /questions/:question_id/answers/:id(.:format)                          {:action=>"show", :controller=>"answers"}
+                               PUT    /questions/:question_id/answers/:id(.:format)                          {:action=>"update", :controller=>"answers"}
+                               DELETE /questions/:question_id/answers/:id(.:format)                          {:action=>"destroy", :controller=>"answers"}
+                     questions GET    /questions(.:format)                                                   {:action=>"index", :controller=>"questions"}
+                               POST   /questions(.:format)                                                   {:action=>"create", :controller=>"questions"}
+                  new_question GET    /questions/new(.:format)                                               {:action=>"new", :controller=>"questions"}
+                 edit_question GET    /questions/:id/edit(.:format)                                          {:action=>"edit", :controller=>"questions"}
+                      question GET    /questions/:id(.:format)                                               {:action=>"show", :controller=>"questions"}
+                               PUT    /questions/:id(.:format)                                               {:action=>"update", :controller=>"questions"}
+                               DELETE /questions/:id(.:format)                                               {:action=>"destroy", :controller=>"questions"}
+           topics_neighborhood POST   /topics/neighborhood(.:format)                                         {:action=>"neighborhood", :controller=>"topics"}
+                           add GET    /topics/:id/add(.:format)                                              {:action=>"add", :controller=>"topics"}
+autocomplete_topic_name_topics GET    /topics/autocomplete_topic_name(.:format)                              {:action=>"autocomplete_topic_name", :controller=>"topics"}
+                        topics GET    /topics(.:format)                                                      {:action=>"index", :controller=>"topics"}
+                               POST   /topics(.:format)                                                      {:action=>"create", :controller=>"topics"}
+                     new_topic GET    /topics/new(.:format)                                                  {:action=>"new", :controller=>"topics"}
+                    edit_topic GET    /topics/:id/edit(.:format)                                             {:action=>"edit", :controller=>"topics"}
+                         topic GET    /topics/:id(.:format)                                                  {:action=>"show", :controller=>"topics"}
+                               PUT    /topics/:id(.:format)                                                  {:action=>"update", :controller=>"topics"}
+                               DELETE /topics/:id(.:format)                                                  {:action=>"destroy", :controller=>"topics"}
+                      messages GET    /messages(.:format)                                                    {:action=>"index", :controller=>"messages"}
+                               POST   /messages(.:format)                                                    {:action=>"create", :controller=>"messages"}
+                   new_message GET    /messages/new(.:format)                                                {:action=>"new", :controller=>"messages"}
+                  edit_message GET    /messages/:id/edit(.:format)                                           {:action=>"edit", :controller=>"messages"}
+                       message GET    /messages/:id(.:format)                                                {:action=>"show", :controller=>"messages"}
+                               PUT    /messages/:id(.:format)                                                {:action=>"update", :controller=>"messages"}
+                               DELETE /messages/:id(.:format)                                                {:action=>"destroy", :controller=>"messages"}
+              new_user_session GET    /users/sign_in(.:format)                                               {:action=>"new", :controller=>"devise/sessions"}
+                  user_session POST   /users/sign_in(.:format)                                               {:action=>"create", :controller=>"devise/sessions"}
+          destroy_user_session GET    /users/sign_out(.:format)                                              {:action=>"destroy", :controller=>"devise/sessions"}
+                 user_password POST   /users/password(.:format)                                              {:action=>"create", :controller=>"devise/passwords"}
+             new_user_password GET    /users/password/new(.:format)                                          {:action=>"new", :controller=>"devise/passwords"}
+            edit_user_password GET    /users/password/edit(.:format)                                         {:action=>"edit", :controller=>"devise/passwords"}
+                               PUT    /users/password(.:format)                                              {:action=>"update", :controller=>"devise/passwords"}
+             user_registration POST   /users(.:format)                                                       {:action=>"create", :controller=>"devise/registrations"}
+         new_user_registration GET    /users/sign_up(.:format)                                               {:action=>"new", :controller=>"devise/registrations"}
+        edit_user_registration GET    /users/edit(.:format)                                                  {:action=>"edit", :controller=>"devise/registrations"}
+                               PUT    /users(.:format)                                                       {:action=>"update", :controller=>"devise/registrations"}
+                               DELETE /users(.:format)                                                       {:action=>"destroy", :controller=>"devise/registrations"}
+                         users GET    /users(.:format)                                                       {:action=>"index", :controller=>"users"}
+                               POST   /users(.:format)                                                       {:action=>"create", :controller=>"users"}
+                      new_user GET    /users/new(.:format)                                                   {:action=>"new", :controller=>"users"}
+                     edit_user GET    /users/:id/edit(.:format)                                              {:action=>"edit", :controller=>"users"}
+                          user GET    /users/:id(.:format)                                                   {:action=>"show", :controller=>"users"}
+                               PUT    /users/:id(.:format)                                                   {:action=>"update", :controller=>"users"}
+                               DELETE /users/:id(.:format)                                                   {:action=>"destroy", :controller=>"users"}
+                          root        /(.:format)                                                            {:action=>"index", :controller=>"topics"}

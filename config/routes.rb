@@ -8,6 +8,9 @@ Dream::Application.routes.draw do
         end
     end
     
+    match '/topics/neighborhood' => "topics#neighborhood", :via => "post"
+    match '/topics/:id/add' => "topics#add", :as => :add, :via => "get"
+    
     resources :topics do
         get :autocomplete_topic_name, :on => :collection
     end
@@ -17,5 +20,5 @@ Dream::Application.routes.draw do
     devise_for :users
     resources :users
 
-    root :to => "questions#index"
+    root :to => "topics#index"
 end

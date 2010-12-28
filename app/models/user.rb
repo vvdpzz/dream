@@ -16,7 +16,8 @@ class User
 
     references_many :topics,
                     :stored_as => :array,
-                    :inverse_of => :users
+                    :inverse_of => :users,
+                    :index => true
     
     references_many :answers
     references_many :comments
@@ -24,6 +25,7 @@ class User
     @@max_depth = 0
     @@result = []
 
+    # user.topics >> topic
     def remove(topic)
         self.topic_ids.delete topic.id
         self.save
@@ -31,27 +33,12 @@ class User
         topic.save
     end
     
-    def dfs(topic, current_depth)
-        @@result.concat(topic.related_questions_except(self)).uniq!
-        if @@result.count < 11
-            if current_depth < @@max_depth
-                topic.parents.each do |parent|
-                    dfs(parent, current_depth + 1)
-                end
-            end
-        else
-            return
-        end
-    end
-    
     def related_questions
-        1.upto(4) do |@@max_depth|
-            self.topics.each do |topic|
-                dfs(topic, 1)
-                break unless @@result.count < 11
-            end
+        questions = []
+        self.topics.each do |topic|
+            questions.concat(topic.unanswered_questions(self)).uniq!
         end
-        return @@result
+        return questions
     end
     
     # footprint

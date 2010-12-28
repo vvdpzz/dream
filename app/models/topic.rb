@@ -1,24 +1,29 @@
 class Topic
     include Mongoid::Document
     field :name
+    index(
+      [
+        [ :name, Mongo::ASCENDING ]
+      ],
+      :unique => true,
+      :background => true
+    )
 
-    references_many :parents,
+    references_many :neighbors,
                     :class_name => 'Topic',
                     :stored_as => :array,
-                    :inverse_of => :children
-
-    references_many :children,
-                    :class_name => 'Topic',
-                    :stored_as => :array,
-                    :inverse_of => :parents
+                    :inverse_of => :neighbors,
+                    :index => true
 
     references_many :users,
                     :stored_as => :array,
-                    :inverse_of => :topics
+                    :inverse_of => :topics,
+                    :index => true
     
     references_many :questions,
                     :stored_as => :array,
-                    :inverse_of => :topics
+                    :inverse_of => :topics,
+                    :index => true
                     
     # find topic by name
     def self.find_by_name(name)
@@ -43,6 +48,13 @@ class Topic
         return users.uniq
     end
     
+    # return unanswered questions
+    # not I asked and no answer was accepted
+    # currently only not I asked
+    def unanswered_questions(user)
+        return related_questions_except(user)
+    end
+    
     # return the particular topic's all questions
     def related_questions_except(user)
         questions = []
@@ -52,61 +64,7 @@ class Topic
                 questions << question
             end
         end
-        self.children.each do |child|
-            child.questions.each do |question|
-                if question.user != user and !question.answers.where(:user_id => user.id).present?
-                    questions << question
-                end
-            end
-        end
         return questions
-    end
-    
-    # return all the related users
-    def related_users
-        dl = []
-        users = []
-        hash = {}
-        i = 0
-        
-        dl.push self
-        users.concat self.users
-        hash[self] = true
-                
-        while i < dl.size
-            topic = dl[i]
-            # puts "TOPIC #{topic.name}"
-            topic.parents.each do |parent|
-                if not hash[parent]
-                    # puts "      #{parent.name}"
-                    dl.push parent
-                    users.concat(parent.all_users).uniq!
-                    hash[parent] = true
-                end
-            end
-            i+=1
-        end
-        return users
-    end
-    
-    # return topic's brothers
-    def brothers
-        brothers = []
-        self.parents.each do |parent|
-            brothers.concat parent.children
-        end
-        return brothers.uniq
-    end
-    
-    # return no parents no children
-    def self.nopnoc
-        topics = []
-        Topic.all.each do |topic|
-            if !topic.parents.present? and !topic.children.present?
-                topics << topic
-            end
-        end
-        return topics
     end
 
 end
