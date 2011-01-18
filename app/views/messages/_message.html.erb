@@ -1,0 +1,4 @@
+<%= form_for(@message) do |f| %>
+	<%= f.text_area :body, :class => "gist" %>
+	<%= f.submit "Send", :class => "submit" %>
+<% end %>

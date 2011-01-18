@@ -1,16 +1,44 @@
-<div id="content">
-	<%= form_tag({:controller => "topics", :action => "create"}, :remote => true, :id => "new_topic") do %>
-		<%= text_field_tag :topic, {}, :autocomplete => autocomplete_topic_name_topics_path, :class => "autocomplete" %>
-		<%= submit_tag "Add Topic", :class => "submit" %>
-	<% end %>
-	<div id="topics" class="clearfix">
-		<%= render :partial => "partials/topic", :collection => @user.topics %>
+<div class="user_left">
+	<div class="gravatar">
+		<%= image_tag @user.gravatar_url(:size => 128) %>
 	</div>
-	<%= form_for(@message = current_user.messages.build, :remote => true) do |f| %>
-		<%= f.text_area :body %>
-		<%= f.submit "Send", :class => "submit" %>
-	<% end %>
-	<div id="messages">
-		<%= render :partial => "partials/message", :collection => @user.messages %>
-	</div>
+	<div class="money"><%= cny @user.money %></div>
 </div>
+<table>
+	<tbody>
+		<tr>
+			<th><%= t 'serial_number' %>
+			<th><%= t 'occur_time' %></th>
+			<th><%= t 'excerpt' %></th>
+			<th><%= t 'reason' %></th>
+			<th><%= t 'type' %></th>
+			<th><%= t 'amount' %></th>
+			<th><%= t 'status' %></th>
+		</tr>
+<% @records.each do |record| %>
+	<% if record.reason == "recharge" %>
+		<tr>
+			<td><%= record.sn %></td>
+			<td><%= record.created_at.strftime("%Y-%m-%d %H:%M:%S").downcase %></td>
+			<td><%= "注册赠送" %></td>
+			<td><%= t record.reason %></td>
+			<td><%= t record.io %></td>
+			<td><%= cny record.amount %></td>
+			<td><%= t record.status %></td>
+		</tr>
+	<% else %>
+		<tr>
+			<td><%= record.sn %></td>
+			<td><%= record.created_at.strftime("%Y-%m-%d %H:%M:%S").downcase %></td>
+			<% if record.instance_id %>
+				<td><%= excerpt_record(record) %></td>
+			<% end -%>
+			<td><%= t record.reason %></td>
+			<td><%= t record.io %></td>
+			<td><%= cny record.amount %></td>
+			<td><%= t record.status %></td>
+		</tr>
+	<% end -%>
+<% end -%>
+	</tbody>
+</table>

@@ -1,12 +1,15 @@
 class TopicsController < ApplicationController
-    
-    before_filter :authenticate_user!
-        
-    autocomplete :topic, :name
+            
+    autocomplete :topic, :name, :full => true
     
     def create
         @topic = Topic.find_or_create_by(:name => params[:topic])
         current_user.topics << @topic
+    end
+    
+    def update
+        @topic = Topic.find(params[:id])
+        @topic.update_attributes(params[:topic])
     end
     
     def neighborhood
@@ -23,7 +26,7 @@ class TopicsController < ApplicationController
     
     def destroy
         @topic = Topic.find(params[:id])
-        @topic.remove(current_user)
+        @topic.remove_user(current_user)
     end
     
     def index

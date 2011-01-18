@@ -4,6 +4,7 @@
 		<span class="timestamp"><%= message.created_at.strftime("%l:%M %p").downcase %></span>
 	</div>
 	<div class="excerpt">
-		<%= message.body %>
+		<%= safe_html message.markdown %>
 	</div>
+	<%= link_to "Edit", [:edit,message] %> | <%= link_to "Destroy", message, :method => :delete, :remote => true %>
 <% end %>

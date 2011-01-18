@@ -2,14 +2,15 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.3'
 gem 'jquery-rails'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'devise'
 gem 'mongoid'
 gem 'bson_ext'
 gem 'rails3-jquery-autocomplete'
+gem 'cancan'
+gem 'role_model'
+gem 'acts-as-taggable-on'
+gem 'bluecloth'
+gem 'gravtastic'
 
 # footprint
 gem 'hubruby'

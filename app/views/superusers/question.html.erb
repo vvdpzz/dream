@@ -1,0 +1,30 @@
+<table>
+	<tbody>
+		<th>Name</th>
+		<th>Question</th>
+		<th>Topics</th>
+		<th>Answers Count</th>
+		<th>Created_at</th>
+		<th>Detail</th>
+		<th>Answered</th>
+		<% @questions.each do |question| %>
+		<tr>
+			<td><%= question.user.name %></td>
+			<td><%= question.markdown4short %></td>
+			<td>
+				<% question.topics.each do |topic| %>
+					<%= topic.name %>
+				<% end %>
+			</td>
+			<td><%= question.answers.count %></td>
+			<td><%= question.created_at.strftime("%H:%M:%S %m/%d/%Y").downcase %></td>
+			<td><%= link_to 'See', superusers_show_url(:id => question.id) %></td>
+			<% if !question.answers.where(:user_id => current_user.id).present? and question.user != current_user %>
+			<td>False</td>
+			<% else %>
+			<td>True</td>
+			<% end %>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

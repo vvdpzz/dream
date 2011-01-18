@@ -1,5 +1,6 @@
 class Topic
     include Mongoid::Document
+    include Mongoid::Timestamps
     field :name
     index(
       [
@@ -8,6 +9,8 @@ class Topic
       :unique => true,
       :background => true
     )
+    
+    validates_presence_of :name
 
     references_many :neighbors,
                     :class_name => 'Topic',
@@ -31,11 +34,18 @@ class Topic
     end
 
     # delete the relational association between topic and user
-    def remove(user)
+    def remove_user(user)
         self.user_ids.delete user.id
         self.save
         user.topic_ids.delete self.id
         user.save
+    end
+    
+    def remove_neighbor(neighbor)
+        self.neighbor_ids.delete neighbor.id
+        self.save
+        neighbor.neighbor_ids.delete self.id
+        neighbor.save
     end
 
     # return the particular topic's all users, self and his children's

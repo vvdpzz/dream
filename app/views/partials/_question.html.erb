@@ -1,4 +1,7 @@
 <%= div_for question do %>
+	<div class="money">
+		<%= cny(question.sum) %>
+	</div>
 	<div class="topics">
 		<% question.topics.each do |topic| %>
 			<div class="topic"><%= topic.name %></div>
@@ -9,7 +12,7 @@
 		<span class="timestamp"><%= question.created_at.strftime("%l:%M %p").downcase %></span>
 	</div>
 	<div class="excerpt">
-		<%= question.body %>
+		<%= safe_html question.markdown4short %>
 	</div>
 	<% if question.answers.present? %>
 		<h1><%= question.answers.count %> Answers</h1>

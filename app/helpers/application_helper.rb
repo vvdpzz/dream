@@ -1,45 +1,18 @@
 module ApplicationHelper
-
-
-
-    def find_user_by(topic)
-        dl = []
-        generation = []
-        hash = {}
-        dl.push(find_topic(topic))
-        generation.push 1
-        hash[topic] = true
-        i = 0
-        while i <= dl.size
-            topic = dl[i]
-            topic.parents.each do |parent|
-                if not hash[parent]
-                    dl.push parent
-                    generation.push generation[i]+1
-                    hash[topic] = true
-                end
-            end
-            i+=1
-        end
-        
-        # get users
-        i = 0
-        while i < generation.size
-            
-            # get the same generation
-            j = i
-            while generation[j] == generation[j+1]
-                j+=1
-            end
-            
-            # calc the same generation's users total size
-            i.upto(j) do |k|
-                sum += dl[k].users.count
-            end
-            
-            
-            
-        end
+    def safe_html(text)
+      sanitize text, :tags => %w(div span h1 h2 h3 h4 h5 h6 p a b strong em pre img br table th tr td ol ul li),
+                     :attributes => %w(class href src width height)
     end
-
+    def excerpt_record(record)
+        truncate(record.model.classify.constantize.find(record.instance_id).markdown4short.gsub(/<\/?[^>]*>/,  ""), :length => 30)
+    end
+    def excerpt(string)
+        truncate(string.gsub(/<\/?[^>]*>/,  ""), :length => 140)
+    end
+    def cny(money)
+        number_to_currency(money.to_f/100)
+    end
+    def nwp(money)
+        number_with_precision(money.to_f/100,:precision => 2)
+    end
 end

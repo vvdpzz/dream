@@ -1,0 +1,6 @@
+<div id="main">
+	<%= link_to 'New Message', new_message_path %>
+	<div id="messages">
+		<%= render :partial => "partials/message", :collection => @messages %>
+	</div>
+</div>

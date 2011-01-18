@@ -41,9 +41,10 @@ $(document).ready(function(){
 	jQuery.railsAutocomplete.fn.extend = jQuery.railsAutocomplete.extend = jQuery.extend;
 	jQuery.railsAutocomplete.fn.extend({
 		init: function(e) {
-			e.delimiter = $(e).attr('data-delimiter') || null;
+			//e.delimiter = $(e).attr('data-delimiter') || null;
+			e.delimiter = $(e).attr('delimiter') || null;
 			function split( val ) {
-				return val.split( e.delimiter );
+				return val.replace(/，/,',').split( e.delimiter );
 			}
 			function extractLast( term ) {
 				return split( term ).pop();

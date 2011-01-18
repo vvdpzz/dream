@@ -1,0 +1,34 @@
+<table>
+	<tbody>
+		<th>Name</th>
+		<th>E-Mail</th>
+		<th>Topics Count</th>
+		<th>Questions</th>
+		<th>Answers</th>
+		<th>Comments</th>
+		<th>Created_at</th>
+		<th>Current_sign_in_at</th>
+		<th>Current_sign_in_ip</th>
+		<th>Last_sign_in_at</th>
+		<th>Last_sign_in_ip</th>
+		<th>Sign_in_count</th>
+		<th>Updated_at</th>
+		<% @users.each do |user| %>
+		<tr>
+			<td><%= user.name %></td>
+			<td><%= user.email %></td>
+			<td><%= user.topics.count %></td>
+			<td><%= user.questions.count %></td>
+			<td><%= user.answers.count %></td>
+			<td><%= user.comments.count %></td>
+			<td><%= user.created_at.strftime("%H:%M:%S %m/%d/%Y").downcase %></td>
+			<td><%= user.current_sign_in_at.strftime("%H:%M:%S %m/%d/%Y").downcase %></td>
+			<td><%= user.current_sign_in_ip %></td>
+			<td><%= user.last_sign_in_at.strftime("%H:%M:%S %m/%d/%Y").downcase %></td>
+			<td><%= user.last_sign_in_ip %></td>
+			<td><%= user.sign_in_count %></td>
+			<td><%= user.updated_at.strftime("%H:%M:%S %m/%d/%Y").downcase %></td>
+		</tr>
+		<% end %>		
+	</tbody>
+</table>
