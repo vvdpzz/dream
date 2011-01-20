@@ -65,7 +65,7 @@ class Question
 
     def accounting_for_ask(fee)
         self.user.records.create!(
-        :sn => Time.stamp
+        :sn => Time.stamp,
         :io => "out",
         :reason => "ask",
         :description => excerpt_record_description(self.markdown4short),
@@ -78,7 +78,7 @@ class Question
 
     def accounting_for_reward(fee)
         self.user.records.create!(
-        :sn => Time.stamp
+        :sn => Time.stamp,
         :io => "out",
         :reason => "reward",
         :description => excerpt_record_description(self.markdown4short),
