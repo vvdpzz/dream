@@ -18,7 +18,7 @@ class Answer
   
   def accounting_for_answer(answer_fee)
       self.user.records.create!(
-          :sn => Time.now.to_f.to_s.gsub('.',''),
+          :sn => Time.stamp
           :io => "out",
           :reason => "answer",
           :description => excerpt_record_description(self.markdown),
@@ -33,7 +33,7 @@ class Answer
   
   def accounting_for_accept(fee)
       self.user.records.create!(
-          :sn => Time.now.to_f.to_s.gsub('.',''),
+          :sn => Time.stamp
           :io => "in",
           :reason => "accepted",
           :description => excerpt_record_description(self.question.markdown4short),

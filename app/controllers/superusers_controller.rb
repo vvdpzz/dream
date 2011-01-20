@@ -27,7 +27,7 @@ class SuperusersController < ApplicationController
             user.money += amount
             user.save
             user.records.create!(
-                :sn => Time.now.to_f.to_s.gsub('.',''),
+                :sn => Time.stamp
                 :io => "in",
                 :reason => "recharge",
                 :description => "充值",
