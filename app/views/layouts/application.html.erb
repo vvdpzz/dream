@@ -15,8 +15,6 @@
 			<%= link_to "Topics", topics_path %> | 
 			<%= link_to "Messages", messages_path %> | 
 			<%= link_to "Ask Question", new_question_path %> | 
-			<%= link_to "Questions You've Asked", asked_path %> | 
-			<%= link_to "Answers You've Given", answered_path %> | 
 			<%= link_to current_user.name, current_user %> | 
 			<%= link_to "Sign out", destroy_user_session_path %>
 		<% else %>
