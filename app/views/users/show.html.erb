@@ -1,44 +1,59 @@
-<div class="user_left">
-	<div class="gravatar">
-		<%= image_tag @user.gravatar_url(:size => 128) %>
+<div class="user_information">
+	<div class="user_left">
+		<div class="gravatar">
+			<%= image_tag @user.gravatar_url(:size => 128) %>
+		</div>
+		<div class="money"><%= cny @user.money %></div>
 	</div>
-	<div class="money"><%= cny @user.money %></div>
 </div>
-<table>
-	<tbody>
-		<tr>
-			<th><%= t 'serial_number' %>
-			<th><%= t 'occur_time' %></th>
-			<th><%= t 'excerpt' %></th>
-			<th><%= t 'reason' %></th>
-			<th><%= t 'type' %></th>
-			<th><%= t 'amount' %></th>
-			<th><%= t 'status' %></th>
-		</tr>
-<% @records.each do |record| %>
-	<% if record.reason == "recharge" %>
-		<tr>
-			<td><%= record.sn %></td>
-			<td><%= record.created_at.strftime("%Y-%m-%d %H:%M:%S").downcase %></td>
-			<td><%= "注册赠送" %></td>
-			<td><%= t record.reason %></td>
-			<td><%= t record.io %></td>
-			<td><%= cny record.amount %></td>
-			<td><%= t record.status %></td>
-		</tr>
-	<% else %>
-		<tr>
-			<td><%= record.sn %></td>
-			<td><%= record.created_at.strftime("%Y-%m-%d %H:%M:%S").downcase %></td>
-			<% if record.instance_id %>
-				<td><%= excerpt_record(record) %></td>
-			<% end -%>
-			<td><%= t record.reason %></td>
-			<td><%= t record.io %></td>
-			<td><%= cny record.amount %></td>
-			<td><%= t record.status %></td>
-		</tr>
+<div id="main">
+	<h1>Records</h1>
+	<table>
+		<tbody>
+			<tr>
+				<th><%= t 'serial_number' %>
+				<th><%= t 'occur_time' %></th>
+				<th><%= t 'excerpt' %></th>
+				<th><%= t 'reason' %></th>
+				<th><%= t 'type' %></th>
+				<th><%= t 'amount' %></th>
+				<th><%= t 'status' %></th>
+			</tr>
+	<% @records.each do |record| %>
+		<% if record.reason == "recharge" %>
+			<tr>
+				<td><%= record.sn %></td>
+				<td><%= record.created_at.strftime("%Y-%m-%d %H:%M:%S").downcase %></td>
+				<td><%= "注册赠送" %></td>
+				<td><%= t record.reason %></td>
+				<td><%= t record.io %></td>
+				<td><%= cny record.amount %></td>
+				<td><%= t record.status %></td>
+			</tr>
+		<% else %>
+			<tr>
+				<td><%= record.sn %></td>
+				<td><%= record.created_at.strftime("%Y-%m-%d %H:%M:%S").downcase %></td>
+				<% if record.instance_id %>
+					<td><%= excerpt_record(record) %></td>
+				<% end -%>
+				<td><%= t record.reason %></td>
+				<td><%= t record.io %></td>
+				<td><%= cny record.amount %></td>
+				<td><%= t record.status %></td>
+			</tr>
+		<% end -%>
 	<% end -%>
-<% end -%>
-	</tbody>
-</table>
+		</tbody>
+	</table>
+	<h1><%= @questions.count %> Questions You've Asked</h1>
+	<div class="questions" class="clearfix">
+		<%= render :partial => "partials/list", :collection => @questions, :as => :question %>
+	</div>
+ 
+	<h1><%= @answers.count %> Answers You've Given</h1>
+	<div class="questions" class="clearfix">
+		<%= render :partial => "partials/answered", :collection => @answers, :as => :answer %>
+	</div>
+  
+</div>

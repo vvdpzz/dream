@@ -188,7 +188,6 @@ tr:nth-child(odd) {background: #FFF}
 	color:gray;
 }
 .user_left{
-	float:left;
 	width:128px;
 }
 .gravatar{
