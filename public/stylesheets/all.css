@@ -22,7 +22,6 @@ textarea{
 }
 .submit{
 	margin-top:5px;
-	float:right;
 }
 .autocomplete, textarea{-webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box;}
 #container{
@@ -128,7 +127,7 @@ html[xmlns] .clearfix {
 }
 
 .small_topics{
-	padding:10px 0;
+	padding-bottom:15px;
 }
 .small_topic{
 	position:relative;
@@ -178,9 +177,10 @@ tr:nth-child(odd) {background: #FFF}
 }
 #main{
 	width:720px;
+	float:left;
 }
 .gist{
-	height: 300px;
+	height: 100px;
 	border:1px solid #ddd;
 }
 .small_text, .time{
@@ -365,4 +365,7 @@ tr:nth-child(odd) {background: #FFF}
 }
 .comment .post_text{
 	font-size:12px;
+}
+.message .excerpt{
+	padding:10px 0;
 }

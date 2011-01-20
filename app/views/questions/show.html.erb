@@ -4,11 +4,11 @@
 			<div class="post_row">
 				<%= render 'partials/name_headline', :user => @question.user, :anonymous => @question.anonymous %>
 			</div>
-			<%= render "partials/small_topics", :topics => @question.topics %>
 			<div class="post_text">
 				<div><%= safe_html @question.markdown4short %></div>
 				<div><%= safe_html @question.markdown4long %></div>
 			</div>
+			<%= render "partials/small_topics", :topics => @question.topics %>
 			<div class="post_row">
 				<div class="operation">
 					<%= link_to t('edit'), [:edit,@question] %>
