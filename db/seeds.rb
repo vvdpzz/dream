@@ -1,19 +1,23 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
-print "Delete all topics..."
-Topic.delete_all
-puts "[OK]"
-print "Build Topics tree..."
+User.create(:name => "tzzzoz", :email => "tzzzoz@gmail.com", :password => "tzzzoz", :password_confirmation => "tzzzoz")
+User.create(:name => "vvdpzz", :email => "vvdpzz@gmail.com", :password => "vvdpzz", :password_confirmation => "vvdpzz")
+
+
+# print "Delete all topics..."
+# Topic.delete_all
+# puts "[OK]"
+# print "Build Topics tree..."
 # open("/Users/vvdpzz/Desktop/AmazingTree.txt") do |fin|
 # open("/Users/vvdpzz/Desktop/AmazingTree.txt") do |fin|
-current_user = User.first
-open("/Users/vvdpzz/Desktop/topics.txt") do |fin|
-    while !fin.eof?
-        topic = Topic.find_or_create_by(:name => fin.readline.chomp)
-        current_user.topics << topic
-    end
-end
+# current_user = User.first
+# open("/Users/vvdpzz/Desktop/topics.txt") do |fin|
+#     while !fin.eof?
+#         topic = Topic.find_or_create_by(:name => fin.readline.chomp)
+#         current_user.topics << topic
+#     end
+# end
 #   while !fin.eof?
 #     list = []
 #     line = fin.readline.chomp

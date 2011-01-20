@@ -95,6 +95,12 @@ class QuestionsController < ApplicationController
                     :status => "success"
                 )
                 redirect_to @answer.question
+                rewardrecords = @answer.question.user.records.where(:reason => "reward", :instance_id => @answer.question.id)
+                rewardrecords.each do |rewardrecord|
+                    rewardrecord.status = "success"
+                    rewardrecord.save
+                end
+                
             end
         end
     end

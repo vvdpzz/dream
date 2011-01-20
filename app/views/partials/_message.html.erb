@@ -1,10 +1,8 @@
 <%= div_for message do %>
-	<div class="user_summary">
-		<span class="username"><%= message.user.name %></span>
-		<span class="timestamp"><%= message.created_at.strftime("%l:%M %p").downcase %></span>
-	</div>
 	<div class="excerpt">
 		<%= safe_html message.markdown %>
+		<%= link_to "Edit", [:edit,message], :remote => true %>
+		<span class="bullet"> · </span>
+		<span class="item_timestamp" title=""><%= message.created_at.strftime("%l:%M %p").downcase %></span>
 	</div>
-	<%= link_to "Edit", [:edit,message] %> | <%= link_to "Destroy", message, :method => :delete, :remote => true %>
 <% end %>

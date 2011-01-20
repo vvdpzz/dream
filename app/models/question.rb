@@ -8,6 +8,7 @@ class Question
     # description of question, long is optional
     field :short
     validates_presence_of :short
+    validates_length_of :short, :within => 1..140, :on => :create, :message => "must be present"
     field :long
 
     # markdown
@@ -24,7 +25,7 @@ class Question
     # Money
     field :bucket, :type => Integer, :default => 0
     field :reward, :type => Integer, :default => 0
-        validates_numericality_of :reward, :on => :create, :message => "is not a number"
+        validates_numericality_of :reward
     field :sum, :type => Integer, :default => 0
     field :max, :type => Integer, :default => 0
 
