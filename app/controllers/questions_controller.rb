@@ -85,15 +85,8 @@ class QuestionsController < ApplicationController
             if @answer.question.save
                 @answer.user.money += fee
                 @answer.user.save
-                @answer.user.records.create!(
-                    :sn => Time.now.to_f.to_s.gsub('.',''),
-                    :io => "in",
-                    :reason => "accepted",
-                    :amount => fee,
-                    :model => @answer.question.class.to_s,
-                    :instance_id => @answer.question.id,
-                    :status => "success"
-                )
+                @answer.accounting_for_accept(fee)
+                
                 redirect_to @answer.question
                 rewardrecords = @answer.question.user.records.where(:reason => "reward", :instance_id => @answer.question.id)
                 rewardrecords.each do |rewardrecord|

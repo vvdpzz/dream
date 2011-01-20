@@ -20,7 +20,7 @@
 		<tr>
 			<td><%= record.sn %></td>
 			<td><%= record.created_at.strftime("%Y-%m-%d %H:%M:%S").downcase %></td>
-			<td><%= "注册赠送" %></td>
+			<td><%= record.description %></td>
 			<td><%= t record.reason %></td>
 			<td><%= t record.io %></td>
 			<td><%= cny record.amount %></td>
@@ -30,9 +30,7 @@
 		<tr>
 			<td><%= record.sn %></td>
 			<td><%= record.created_at.strftime("%Y-%m-%d %H:%M:%S").downcase %></td>
-			<% if record.instance_id %>
-				<td><%= excerpt_record(record) %></td>
-			<% end -%>
+			<td><%= record.description %></td>
 			<td><%= t record.reason %></td>
 			<td><%= t record.io %></td>
 			<td><%= cny record.amount %></td>

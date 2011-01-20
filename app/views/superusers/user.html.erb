@@ -1,5 +1,24 @@
 <table>
 	<tbody>
+		<tr>
+		<th>Name</th>
+		<th>Amount</th>
+		</tr>
+		<%= form_tag({:controller => "superusers", :action => "recharge"}) do %>
+		<td>
+			<%= text_field_tag :name, {}, :autocomplete => autocomplete_user_name_users_path, :class => "auto" %>
+		</td>
+		<td>
+			<%= text_field_tag :amount, {}, :class => "auto" %>
+		</td>
+		<td>
+			<%= submit_tag 'Recharge' %>
+		</td>
+		<% end %>
+	</tbody>
+</table>
+<table>
+	<tbody>
 		<th>Name</th>
 		<th>E-Mail</th>
 		<th>Topics Count</th>

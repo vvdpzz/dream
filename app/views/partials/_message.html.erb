@@ -3,6 +3,6 @@
 		<%= safe_html message.markdown %>
 		<%= link_to "Edit", [:edit,message], :remote => true %>
 		<span class="bullet"> · </span>
-		<span class="item_timestamp" title=""><%= message.created_at.strftime("%l:%M %p").downcase %></span>
+		<span class="item_timestamp" title=""><%= message.created_at.strftime("%m-%d %l:%M %p").downcase %></span>
 	</div>
 <% end %>
