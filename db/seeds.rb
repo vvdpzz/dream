@@ -6,7 +6,7 @@ User.delete_all
 puts "[OK]"
 
 print "Creating some users..."
-User.create(:name => "greedy", :email => "greedy@gmail.com", :password => "greedy", :password_confirmation => "greedy", :roles_mask => 1)
+User.create(:name => "greedy", :email => "greedy@gmail.com", :password => "greedy", :password_confirmation => "greedy", :roles_mask => 5)
 User.create(:name => "tzzzoz", :email => "tzzzoz@gmail.com", :password => "tzzzoz", :password_confirmation => "tzzzoz")
 User.create(:name => "vvdpzz", :email => "vvdpzz@gmail.com", :password => "vvdpzz", :password_confirmation => "vvdpzz")
 User.create(:name => "zoe", :email => "nankezi.lvqing@gmail.com", :password => "zoezoe", :password_confirmation => "zoezoe")

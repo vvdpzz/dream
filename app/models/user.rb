@@ -29,7 +29,7 @@ class User
     attr_accessible :money
     
     # user's role
-    field :roles_mask, :type => Integer, :default => 0
+    field :roles_mask, :type => Integer, :default => 4
     
     attr_accessible :roles_mask
     include RoleModel
@@ -93,7 +93,7 @@ class User
     protected
         def register_gift
             self.records.create!(
-                :sn => Time.now.to_f.to_s.gsub('.',''),
+                :sn => Time.stamp,
                 :io => "in",
                 :reason => "recharge",
                 :description => "注册赠送",
