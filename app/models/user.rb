@@ -96,6 +96,7 @@ class User
                 :sn => Time.now.to_f.to_s.gsub('.',''),
                 :io => "in",
                 :reason => "recharge",
+                :description => "注册赠送",
                 :amount => APP_CONFIG['register_gift'].to_i,
                 :model => "SYSTEM",
                 :status => "success"

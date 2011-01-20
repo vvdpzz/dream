@@ -21,15 +21,18 @@ Dream::Application.routes.draw do
     resources :messages
         
     devise_for :users
-    resources :users
-    
+    resources :users do
+       get :autocomplete_user_name, :on => :collection
+    end
+
     match '/superusers/user' => "superusers#user", :as => :superusers_users
     match '/superusers' => "superusers#index", :as => :superusers_index
     match '/superusers/question' => "superusers#question", :as => :superusers_questions
     match '/superusers/question/:id' => "superusers#show", :as => :superusers_show
     match '/superusers/topic' => "superusers#topic", :as => :superusers_topic
     match '/superusers/neighbor' => "superusers#neighbor", :as => :superusers_neighbor
+    match '/superusers/recharge' => "superusers#recharge", :as => :superusers_recharge
     match '/superusers/destroy/:one_id/:another_id' => "superusers#destroy", :as => :superusers_destroy
-
+    
     root :to => "questions#index"
 end

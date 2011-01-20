@@ -68,6 +68,7 @@ class Question
         :sn => Time.now.to_f.to_s.gsub('.',''),
         :io => "out",
         :reason => "ask",
+        :description => excerpt_record_description(self.markdown4short),
         :amount => fee,
         :model => self.class.to_s,
         :instance_id => self.id,
@@ -80,6 +81,7 @@ class Question
         :sn => Time.now.to_f.to_s.gsub('.',''),
         :io => "out",
         :reason => "reward",
+        :description => excerpt_record_description(self.markdown4short),
         :amount => fee,
         :model => self.class.to_s,
         :instance_id => self.id,
@@ -116,6 +118,10 @@ class Question
     def excerpt_short_markdown
         excerpt = truncate(self.markdown4short.gsub(/<\/?[^>]*>/,  ""), :length => 140)
         self.update_attributes(:excerpt => excerpt)
+    end
+    
+    def excerpt_record_description(string)
+        truncate(string.gsub(/<\/?[^>]*>/,  ""), :length => 30)
     end
     
     def truncate(text, options = {})

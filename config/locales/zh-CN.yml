@@ -34,7 +34,6 @@ zh-CN:
   item_amount_count_word: "价值"
   item_answer_count_word: "答案"
   
-  
   date:
     formats:
       default: "%Y-%m-%d"

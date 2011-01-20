@@ -6,6 +6,9 @@ module ApplicationHelper
     def excerpt_record(record)
         truncate(record.model.classify.constantize.find(record.instance_id).markdown4short.gsub(/<\/?[^>]*>/,  ""), :length => 30)
     end
+    def excerpt_record_description(string)
+        truncate(string.gsub(/<\/?[^>]*>/,  ""), :length => 30)
+    end
     def excerpt(string)
         truncate(string.gsub(/<\/?[^>]*>/,  ""), :length => 140)
     end

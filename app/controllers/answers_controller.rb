@@ -9,17 +9,8 @@ class AnswersController < ApplicationController
             @answer.markdown = BlueCloth.new(@answer.body).to_html
             
             if @answer.save
-                current_user.records.create!(
-                    :sn => Time.now.to_f.to_s.gsub('.',''),
-                    :io => "out",
-                    :reason => "answer",
-                    :amount => answer_fee,
-                    :model => question.class.to_s,
-                    :instance_id => question.id,
-                    :status => "success"
-                )
-                current_user.money -= answer_fee
-                question.bucket += answer_fee
+                @answer.accounting_for_answer(answer_fee)
+                
                 if question.answers.count == 1
                     question.answer_stats = "answered"
                 end
