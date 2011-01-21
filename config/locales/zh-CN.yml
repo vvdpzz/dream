@@ -36,6 +36,8 @@ zh-CN:
   note_answered: "回答了"
   note_replied: "回复了"
   note_accepted: "接受了你的答案在"
+  delete_q: "退款"
+  delete_a: "退款"
   
   date:
     formats:
