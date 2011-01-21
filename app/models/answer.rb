@@ -44,6 +44,18 @@ class Answer
       )
   end
   
+  def accounting_for_destroy_answer(fee)
+      self.user.records.create!(
+          :sn => Time.stamp,
+          :io => "in",
+          :reason => "delete_a",
+          :description => "答案被删除",
+          :amount => fee,
+          :model => self.class.to_s,
+          :status => "success"
+      )
+  end
+  
   def excerpt_record_description(string)
       truncate(string.gsub(/<\/?[^>]*>/,  ""), :length => 30)
   end

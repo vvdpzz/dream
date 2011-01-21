@@ -32,7 +32,9 @@ Dream::Application.routes.draw do
     match '/superusers/topic' => "superusers#topic", :as => :superusers_topic
     match '/superusers/neighbor' => "superusers#neighbor", :as => :superusers_neighbor
     match '/superusers/recharge' => "superusers#recharge", :as => :superusers_recharge
+    match '/superusers/role_manage' => "superusers#role_manage", :as => :superusers_role_manage
     match '/superusers/destroy/:one_id/:another_id' => "superusers#destroy", :as => :superusers_destroy
+    match '/superusers/destroy/:id' => "superusers#destroy_question", :as => :superusers_destroy_question
     
     root :to => "questions#index"
 end

@@ -74,6 +74,19 @@ class Question
         :instance_id => self.id,
         :status => "success"
         )
+        user = User.find_by_name("greedy")
+        user.money = user.money + fee
+        user.records.create!(
+        :sn => Time.stamp,
+        :io => "in",
+        :reason => "ask",
+        :description => excerpt_record_description(self.markdown4short),
+        :amount => fee,
+        :model => self.class.to_s,
+        :instance_id => self.id,
+        :status => "success"
+        )
+        user.save
     end
 
     def accounting_for_reward(fee)
@@ -86,6 +99,18 @@ class Question
         :model => self.class.to_s,
         :instance_id => self.id,
         :status => "pending"
+        )
+    end
+    
+    def accounting_for_destroy_question(fee)
+        self.user.records.create!(
+            :sn => Time.stamp,
+            :io => "in",
+            :reason => "delete_q",
+            :description => "问题被删除",
+            :amount => fee,
+            :model => self.class.to_s,
+            :status => "success"
         )
     end
 

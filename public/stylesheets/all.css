@@ -368,3 +368,6 @@ tr:nth-child(odd) {background: #FFF}
 .message .excerpt{
 	padding:10px 0;
 }
+#role_manage, #recharge{
+	width:8em;
+}

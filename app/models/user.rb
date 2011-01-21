@@ -56,6 +56,9 @@ class User
     references_many :answers
     references_many :comments
     
+    def self.find_by_name(name)
+        self.where(:name => name).first
+    end
 
     # user.topics >> topic
     def remove_topic(topic)
@@ -88,6 +91,20 @@ class User
         else
             false
         end
+    end
+    
+    def accounting_for_recharge(amount)
+        self.money += amount
+        self.save
+        self.records.create!(
+            :sn => Time.stamp,
+            :io => "in",
+            :reason => "recharge",
+            :description => "充值",
+            :amount => amount,
+            :model => "SYSTEM",
+            :status => "success"
+        )
     end
     
     protected
