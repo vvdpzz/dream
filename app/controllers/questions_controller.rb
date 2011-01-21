@@ -59,6 +59,11 @@ class QuestionsController < ApplicationController
     
     def show
         @question = Question.find params[:id]
+        current_user.notifications.each do |notification|
+            if notification.instance_id == @question.id.to_s
+                notification.destroy
+            end
+        end
     end
     
     def edit
@@ -93,7 +98,7 @@ class QuestionsController < ApplicationController
                     rewardrecord.status = "success"
                     rewardrecord.save
                 end
-                
+                Notification.write(me = @answer.user, friend = current_user, method = "accepted", m0del = @answer.question, markdown = @answer.question.excerpt)
             end
         end
     end

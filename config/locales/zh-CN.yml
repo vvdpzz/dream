@@ -33,6 +33,9 @@ zh-CN:
   reward_word: "价值"
   item_amount_count_word: "价值"
   item_answer_count_word: "答案"
+  note_answered: "回答了"
+  note_replied: "回复了"
+  note_accepted: "接受了你的答案在"
   
   date:
     formats:

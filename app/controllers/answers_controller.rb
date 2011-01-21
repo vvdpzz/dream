@@ -16,6 +16,7 @@ class AnswersController < ApplicationController
                 end
                 current_user.save
                 question.save
+                Notification.write(me = @answer.question.user, friend = current_user, method = "answered", m0del = @answer.question, markdown = @answer.question.excerpt)
             end
         end
     end

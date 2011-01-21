@@ -1,5 +1,8 @@
 class Question
     
+    # FIXME: short's length should within 10..140
+    
+    
     # include ActionView::Helpers::TextHelper
 
     include Mongoid::Document

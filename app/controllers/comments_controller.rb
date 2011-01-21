@@ -5,6 +5,14 @@ class CommentsController < ApplicationController
     end
     def create
         @comment = @m0del.comments.create(:user_id => current_user.id, :body => params[:comment][:body])
+        if @comment.question.class.to_s == "Question"
+            question = @comment.question
+            Notification.write(me = question.user, friend = current_user, method = "commented", m0del = question, markdown = question.excerpt)
+        elsif @comment.question.class.to_s == "Answer"
+            answer = @comment.answer
+            question = @comment.answer.question
+            Notification.write(me = answer.user, friend = current_user, method = "commented", m0del = question, markdown = question.excerpt)
+        end
     end
     
     protected

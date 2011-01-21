@@ -46,6 +46,8 @@ class User
     
     embeds_many :records
     
+    embeds_many :notifications
+    
     references_many :questions
 
     references_many :topics,
