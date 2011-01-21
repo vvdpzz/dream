@@ -86,6 +86,7 @@ class QuestionsController < ApplicationController
             fee = @answer.question.bucket + @answer.question.reward
             @answer.question.bucket = 0
             @answer.question.reward = 0
+            @answer.question.answer_stats = "accepted"
             
             if @answer.question.save
                 @answer.user.money += fee

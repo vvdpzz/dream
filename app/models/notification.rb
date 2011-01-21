@@ -15,7 +15,7 @@ class Notification
     field :status, :type => Boolean, :default => false
 
 
-    def self.write(from, to, method, m0del, markdown)
+    def self.write(me, friend, method, m0del, markdown)
         if me.id != friend.id
             flag = true
             me.notifications.each do |notification|
