@@ -329,7 +329,7 @@ tr:nth-child(odd) {background: #FFF}
 .answer:last-child{
 	border-bottom:1px solid #EBEBEB;
 }
-.accepted{
+#answers .accepted{
 	background:url(/images/accepted.png) no-repeat right top;
 }
 .operation{
