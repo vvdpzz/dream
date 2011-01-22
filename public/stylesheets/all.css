@@ -3,6 +3,7 @@ h1{font-size:138.5%;}h2{font-size:123.1%;}h3{font-size:108%;}h1,h2,h3{margin:1em
 input[type=text],input[type=password],textarea{border:1px solid #ccc;}
 body{font:13px/1.231 'Lucida Grande', Verdana, 'Lucida Sans Regular', 'Lucida Sans Unicode', Arial, sans-serif;*font-size:small;*font:x-small;}select,input,button,textarea{font:99% arial,helvetica,clean,sans-serif;}table{font-size:inherit;font:100%;}pre,code,kbd,samp,tt{font-family:monospace;*font-size:108%;line-height:100%;}
 a{color:#009F00;text-decoration:none;}a:hover{color:#009F00;text-decoration:underline;}
+body{text-rendering: optimizelegibility;}
 #container{
 	padding:0 20px;
 	width:980px;
@@ -358,7 +359,7 @@ tr:nth-child(odd) {background: #FFF}
 }
 .item_amount_count, .item_answer_count{
 	font-size:18px;
-	font-weight:bold;
+	font-family: Arial, Helvetica, sans-serif;
 }
 .item_amount_count_word, .item_answer_count_word{
 	font-size:12px;
@@ -464,4 +465,21 @@ tr:nth-child(odd) {background: #FFF}
 }
 #role_manage, #recharge{
 	width:8em;
+}
+a#feedback{
+	background: #1B97F2 url(/images/feedback.png) no-repeat -2px 50%;
+	display: block;
+	height: 90px;
+	left: 0px;
+	margin-top: -45px;
+	position: fixed;
+	top: 40%;
+	width: 25px;
+	z-index: 100001;
+}
+a#feedback:hover{
+	background-color: #06C;
+	border: 1px #06C;
+	border-left: none;
+	cursor: pointer;
 }
