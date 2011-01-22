@@ -301,9 +301,6 @@ tr:nth-child(odd) {background: #FFF}
 .time{
 	float:right;
 }
-
-
-
 	
 .rewarded{
 	background-color: #6A98D6;
@@ -401,10 +398,6 @@ tr:nth-child(odd) {background: #FFF}
 	line-height:1.4;
 	font-size:14px;
 }
-.additional{
-	float:right;
-	width:200px;
-}
 .headline{
 	font-size:12px;
 	color:#999;
@@ -413,16 +406,9 @@ tr:nth-child(odd) {background: #FFF}
 }
 #answers{
 }
-#answers > h1{
-	font-size:32px;
-	margin-bottom:0;
-}
 .answer{
-	border-top: 1px solid #EBEBEB;
-	padding:10px 0;
-}
-.answer:last-child{
 	border-bottom:1px solid #EBEBEB;
+	margin-bottom:10px;
 }
 #answers .accepted{
 	background:url(/images/accepted.png) no-repeat right top;
@@ -446,7 +432,7 @@ tr:nth-child(odd) {background: #FFF}
 	display:none;
 }
 .comments{
-	margin:10px 0 0;
+	margin:10px 0;
 	font-size:12px;
 }
 .comment:last-child{
