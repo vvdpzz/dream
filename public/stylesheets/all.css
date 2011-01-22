@@ -481,3 +481,9 @@ fieldset .field{margin-bottom: 15px;}
 .dialog .submitSet{padding: 0px 30px 30px;}
 .msg{margin-top: 20px;padding: 15px 30px;text-align: center;text-decoration: none;width: 340px;border-radius:10px;-moz-border-radius:10px;}
 .msg a{font-size:16px;}
+
+.cool{color:#999!important;}
+.warm{color:#9b764f!important;}
+.hot{color:#cf7721!important;}
+.supernova{color:#fe7a15!important;}
+.warning{color:red!important;}
