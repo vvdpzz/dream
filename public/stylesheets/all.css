@@ -130,6 +130,7 @@ ul.nav li.active{
 	width:100%;
 }
 textarea{
+	overflow:auto;
 	width:100%;
 	height:7em;
 	border:1px solid #ccc;
@@ -426,7 +427,7 @@ tr:nth-child(odd) {background: #FFF}
 	margin-top: 3px;
 }
 #new_answer, #new_comment{
-	padding:10px 0 0;
+	padding:0 0 10px;
 }
 #new_comment{
 	display:none;
@@ -441,7 +442,10 @@ tr:nth-child(odd) {background: #FFF}
 .comment{
 	background:url(/images/comment.gif) no-repeat 0 3px;
 	padding-left:20px;
-	padding-bottom:10px;
+	padding-top:10px;
+}
+.comment:first-child{
+	padding-top:0;
 }
 .comment .post_text{
 	font-size:12px;
@@ -469,3 +473,11 @@ a#feedback:hover{
 	border-left: none;
 	cursor: pointer;
 }
+
+.dialog{border: 1px solid #ccc;color: #333;width: 400px;margin: 30px auto;text-align: left;border-radius:10px;-moz-border-radius:10px;}
+.dialog fieldset{padding: 30px 30px 0px;}
+fieldset .field{margin-bottom: 15px;}
+.dialog input[type="text"], input[type="password"] {width:325px;padding: 7px;border-radius:3px;-moz-border-radius:3px;}
+.dialog .submitSet{padding: 0px 30px 30px;}
+.msg{margin-top: 20px;padding: 15px 30px;text-align: center;text-decoration: none;width: 340px;border-radius:10px;-moz-border-radius:10px;}
+.msg a{font-size:16px;}
