@@ -38,6 +38,7 @@ zh-CN:
   note_accepted: "接受了你的答案在"
   delete_q: "退款"
   delete_a: "退款"
+  words_limited: "最多140字"
   
   date:
     formats:

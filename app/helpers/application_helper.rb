@@ -21,9 +21,9 @@ module ApplicationHelper
     
     class NavTabBuilder < TabsOnRails::Tabs::Builder
       def tab_for(tab, name, options, item_options = {})
-        item_options[:class] = (current_tab?(tab) ? 'active' : 'inactive')
-        @context.content_tag(:li) do
-          @context.link_to(name, options,item_options)
+        item_options[:class] = (current_tab?(tab) ? 'active' : nil)
+        @context.content_tag(:li, item_options) do
+          @context.link_to(name, options)
         end
       end
       

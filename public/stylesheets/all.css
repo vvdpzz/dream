@@ -10,8 +10,12 @@ a{color:#009F00;text-decoration:none;}a:hover{color:#009F00;text-decoration:unde
 }
 #header{
 	clear:both;
+	padding:20px 0;
 }
 #notify{
+	clear:both;
+}
+#wrapper{
 	clear:both;
 }
 #content{
@@ -99,23 +103,25 @@ ul.nav{
 }
 ul.nav li{
 	background: #777;
-	display: block;
-	float: left;
-	margin-right: 7px;
+	display: inline;
+	padding: 6px 12px;
+	margin-right:7px;
 }
-ul.nav a, ul.nav span{
+ul.nav a{
 	color: white;
-	display: block;
 	font-weight: bold;
-	padding: 4px 12px;
 	text-decoration: none;
 }
 ul.nav li:hover{
 	background-color: #F90;
 }
-ul.nav a.active{
+ul.nav li.active{
 	background: #F90;
 }
+
+.subheader{clear:both;border-bottom:1px solid #d0def2;height:34px;margin-bottom:15px;}
+.subheader > h1{float:left;line-height:34px;margin:0;font-weight:normal;}
+
 .autocomplete{
 	border:1px solid #ccc;
 	padding:3px;
