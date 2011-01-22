@@ -3,7 +3,52 @@ h1{font-size:138.5%;}h2{font-size:123.1%;}h3{font-size:108%;}h1,h2,h3{margin:1em
 input[type=text],input[type=password],textarea{border:1px solid #ccc;}
 body{font:13px/1.231 'Lucida Grande', Verdana, 'Lucida Sans Regular', 'Lucida Sans Unicode', Arial, sans-serif;*font-size:small;*font:x-small;}select,input,button,textarea{font:99% arial,helvetica,clean,sans-serif;}table{font-size:inherit;font:100%;}pre,code,kbd,samp,tt{font-family:monospace;*font-size:108%;line-height:100%;}
 a{color:#009F00;text-decoration:none;}a:hover{color:#009F00;text-decoration:underline;}
-
+#container{
+	padding:0 20px;
+	width:980px;
+	margin:0 auto;
+}
+	#superuser_container{
+		padding:0 20px;
+		margin:0 auto;
+	}
+	#header{
+		float:left;
+		width:100%;
+	}
+#topbar{
+	background:#f1f1f1;
+	float:left;
+	width:100%;
+}
+#menu{
+	float:right;
+	padding:7px 0;
+}
+ul.nav{
+	font-family: Arial, 'Liberation Sans', 'DejaVu Sans', sans-serif;
+	font-size: 125%;
+	margin:0;
+}
+ul.nav li{
+	background: #777;
+	display: block;
+	float: left;
+	margin-right: 7px;
+}
+ul.nav a, ul.nav span{
+	color: white;
+	display: block;
+	font-weight: bold;
+	padding: 4px 12px;
+	text-decoration: none;
+}
+ul.nav li:hover{
+	background-color: #F90;
+}
+ul.nav .current{
+	background: #F90;
+}
 #content{
 	width:480px;
 	margin:0 auto;
@@ -24,18 +69,6 @@ textarea{
 	margin-top:5px;
 }
 .autocomplete, textarea{-webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box;}
-#container{
-	padding:0 20px;
-	width:980px;
-	margin:0 auto;
-}
-	#superuser_container{
-		padding:0 20px;
-		margin:0 auto;
-	}
-	#header{
-		padding:20px 0;
-	}
 .close-button {
     position: absolute;
     top: -3px;

@@ -47,7 +47,7 @@ class Question
     embeds_many :comments
 
     referenced_in :user, :inverse_of => :questions
-    references_many :topics, :stored_as => :array, :inverse_of => :questions
+    references_and_referenced_in_many :topics, :inverse_of => :questions
     references_many :answers
 
     def mark_short_and_long_down

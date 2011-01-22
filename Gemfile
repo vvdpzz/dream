@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.3'
 gem 'jquery-rails'
 gem 'devise'
-gem 'mongoid'
+gem 'mongoid', "2.0.0.rc.6"
 gem 'bson_ext'
 gem 'rails3-jquery-autocomplete'
 gem 'cancan'
@@ -11,6 +11,7 @@ gem 'role_model'
 gem 'acts-as-taggable-on'
 gem 'bluecloth'
 gem 'gravtastic'
+gem 'tabs_on_rails'
 
 # footprint
 gem 'hubruby'

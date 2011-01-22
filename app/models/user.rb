@@ -50,8 +50,7 @@ class User
     
     references_many :questions
 
-    references_many :topics,
-                    :stored_as => :array,
+    references_and_referenced_in_many :topics,
                     :inverse_of => :users,
                     :index => true
     

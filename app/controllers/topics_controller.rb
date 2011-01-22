@@ -1,4 +1,6 @@
 class TopicsController < ApplicationController
+    
+    set_tab :topics
             
     autocomplete :topic, :name, :full => true
     

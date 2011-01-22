@@ -12,19 +12,16 @@ class Topic
     
     validates_presence_of :name
 
-    references_many :neighbors,
+    references_and_referenced_in_many :neighbors,
                     :class_name => 'Topic',
-                    :stored_as => :array,
                     :inverse_of => :neighbors,
                     :index => true
 
-    references_many :users,
-                    :stored_as => :array,
+    references_and_referenced_in_many :users,
                     :inverse_of => :topics,
                     :index => true
     
-    references_many :questions,
-                    :stored_as => :array,
+    references_and_referenced_in_many :questions,
                     :inverse_of => :topics,
                     :index => true
                     

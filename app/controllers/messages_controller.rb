@@ -1,4 +1,7 @@
 class MessagesController < ApplicationController
+    
+    set_tab :messages
+    
     def new
         @message = current_user.messages.build
     end

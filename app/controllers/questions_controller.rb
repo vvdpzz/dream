@@ -1,4 +1,12 @@
 class QuestionsController < ApplicationController
+    
+    set_tab :questions
+    set_tab :ask, :only => %w(new)
+    set_tab :interesting, :only => %w(interesting)
+    
+    def interesting
+        
+    end
 
     def new
         @question = current_user.questions.build
