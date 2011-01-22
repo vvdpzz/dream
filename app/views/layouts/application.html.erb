@@ -8,21 +8,25 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-	<div id="topbar">
-		<div id="menu">
-			<% if user_signed_in? %>
-				<%= link_to current_user.name, current_user %> | 
-				<%= link_to "Sign out", destroy_user_session_path %>
-			<% else %>
-				<%= link_to "Sign up", new_user_registration_path %> or  
-				<%= link_to "Sign in", new_user_session_path %>
-			<% end %>
+	<div id="top-bar-outer">
+		<div id="top-bar-bg"></div>
+		<div id="top-bar">
+			<div class="top-bar-inside">
+				<div class="session">
+					<% if user_signed_in? %>
+						<%= link_to current_user.name, current_user %> | 
+						<%= link_to "Sign out", destroy_user_session_path %>
+					<% else %>
+						<%= link_to "Sign up", new_user_registration_path %> or  
+						<%= link_to "Sign in", new_user_session_path %>
+					<% end %>
+				</div>
+			</div>
 		</div>
 	</div>
-	<div style="clear:both"></div>
 	<div id="container">
 		<div id="header">
-			<%= tabs_tag(:open_tabs => { :class => "nav" }) do |tab| %>
+			<%= tabs_tag(:builder => ApplicationHelper::NavTabBuilder, :open_tabs => { :class => "nav" }) do |tab| %>
 			<%= tab.interesting 'Interesting', interesting_path %>
 			<%= tab.questions	'Questions',	questions_path %>
 			<%= tab.messages 'Messages', messages_path %>
@@ -35,7 +39,9 @@
 			<%= render 'partials/notify' if current_user %>
 		</div>
 		<%= link_to "意见反馈"%>
-		<%= yield %>
+		<div id="wrapper">
+			<%= yield %>
+		</div>
 	</div>
 </body>
 </html>

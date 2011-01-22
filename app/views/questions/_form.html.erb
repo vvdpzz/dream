@@ -1,6 +1,6 @@
 <div id="content">
 	<%= form_for(@question) do |f| %>
-		<h3><%= t('short') %></h3>
+		<h3><%= t('short') %> <span class="small_text"><%= t('words_limited') %></span></h3>
 		<%= f.text_area :short %>
 		<h3><%= t('long') %> <span class="small_text"><%= t('long_additional') %></span></h3>
 		<%= f.text_area :long %>

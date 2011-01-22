@@ -1,13 +1,17 @@
-<h1>My Topics</h1>
-<div id="nav" class="clearfix">
-	<div class="topic_nav" id="<%=current_user.id%>">
-		<%= link_to current_user.name, topics_path, :remote => true %>
-	</div>
+<div class="subheader">
+	<h1>Topics</h1>
 </div>
-<div id="topics">
-	<%= render "partials/core", :core => current_user %><%= render 'topic' %>
-	<div id="nodes" class="clearfix">
-		<%= render :partial => "partials/topic", :collection => current_user.topics %>
+<div id="content">
+	<div id="nav" class="clearfix">
+		<div class="topic_nav" id="<%=current_user.id%>">
+			<%= link_to current_user.name, topics_path, :remote => true %>
+		</div>
+	</div>
+	<div id="topics">
+		<%= render "partials/core", :core => current_user %><%= render 'topic' %>
+		<div id="nodes" class="clearfix">
+			<%= render :partial => "partials/topic", :collection => current_user.topics %>
+		</div>
 	</div>
 </div>
 <script>
