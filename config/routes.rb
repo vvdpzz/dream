@@ -1,8 +1,12 @@
 Dream::Application.routes.draw do
     
+  resources :feedbacks
+
     match '/questions/asked' => "questions#asked", :as => :asked
     match '/questions/answered' => "questions#answered", :as => :answered
     match '/questions/accepted/:id' => "questions#accepted", :as => :accept_answer
+    match '/interesting' => "interesting#index", :as => :interesting
+    match '/unanswered' => "unanswered#index", :as => :unanswered
     resources :questions do
         resources :answers
         resources :comments

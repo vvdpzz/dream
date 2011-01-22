@@ -68,7 +68,7 @@ class QuestionsController < ApplicationController
     def show
         @question = Question.find params[:id]
         current_user.notifications.each do |notification|
-            if notification.instance_id == @question.id.to_s
+            if notification.instance_id == @question.id
                 notification.destroy
             end
         end
