@@ -14,6 +14,9 @@ Dream::Application.routes.draw do
     resources :answers do
         resources :comments
     end
+    resources :feedbacks do
+        resources :comments
+    end
     
     match '/topics/neighborhood' => "topics#neighborhood", :via => "post"
     match '/topics/:id/add' => "topics#add", :as => :add, :via => "get"

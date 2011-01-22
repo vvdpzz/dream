@@ -49,6 +49,8 @@ class User
     embeds_many :notifications
     
     references_many :questions
+    
+    references_many :feedbacks
 
     references_and_referenced_in_many :topics,
                     :inverse_of => :users,

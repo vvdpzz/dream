@@ -12,6 +12,9 @@ class CommentsController < ApplicationController
             answer = @comment.answer
             question = @comment.answer.question
             Notification.write(me = answer.user, friend = current_user, method = "commented", m0del = question, markdown = question.excerpt)
+        elsif @comment.question.class.to_s == "Feedback"
+            feedback = @comment.feedback
+            Notification.write(me = feedback.user, friend = current_user, method = "commented", m0del = feedback, markdown = question.excerpt)
         end
     end
     
@@ -20,9 +23,12 @@ class CommentsController < ApplicationController
             if params[:question_id]
                 @name = "question"
                 id = params[:question_id]
-            else
+            elsif params[:answer_id]
                 @name = "answer"
                 id = params[:answer_id]
+            elsif params[:feedback_id]
+                @name = "feedback"
+                id = params[:feedback_id]
             end
             @man = @name.classify.constantize
             @m0del = @man.find id
