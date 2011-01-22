@@ -3,6 +3,7 @@ h1{font-size:138.5%;}h2{font-size:123.1%;}h3{font-size:108%;}h1,h2,h3{margin:1em
 input[type=text],input[type=password],textarea{border:1px solid #ccc;}
 body{font:13px/1.231 'Lucida Grande', Verdana, 'Lucida Sans Regular', 'Lucida Sans Unicode', Arial, sans-serif;*font-size:small;*font:x-small;}select,input,button,textarea{font:99% arial,helvetica,clean,sans-serif;}table{font-size:inherit;font:100%;}pre,code,kbd,samp,tt{font-family:monospace;*font-size:108%;line-height:100%;}
 a{color:#009F00;text-decoration:none;}a:hover{color:#009F00;text-decoration:underline;}
+body{text-rendering: optimizelegibility;}
 #container{
 	padding:0 20px;
 	width:980px;
@@ -129,6 +130,7 @@ ul.nav li.active{
 	width:100%;
 }
 textarea{
+	overflow:auto;
 	width:100%;
 	height:7em;
 	border:1px solid #ccc;
@@ -300,9 +302,6 @@ tr:nth-child(odd) {background: #FFF}
 .time{
 	float:right;
 }
-
-
-
 	
 .rewarded{
 	background-color: #6A98D6;
@@ -358,7 +357,7 @@ tr:nth-child(odd) {background: #FFF}
 }
 .item_amount_count, .item_answer_count{
 	font-size:18px;
-	font-weight:bold;
+	font-family: Arial, Helvetica, sans-serif;
 }
 .item_amount_count_word, .item_answer_count_word{
 	font-size:12px;
@@ -400,10 +399,6 @@ tr:nth-child(odd) {background: #FFF}
 	line-height:1.4;
 	font-size:14px;
 }
-.additional{
-	float:right;
-	width:200px;
-}
 .headline{
 	font-size:12px;
 	color:#999;
@@ -412,16 +407,9 @@ tr:nth-child(odd) {background: #FFF}
 }
 #answers{
 }
-#answers > h1{
-	font-size:32px;
-	margin-bottom:0;
-}
 .answer{
-	border-top: 1px solid #EBEBEB;
-	padding:10px 0;
-}
-.answer:last-child{
 	border-bottom:1px solid #EBEBEB;
+	margin-bottom:10px;
 }
 #answers .accepted{
 	background:url(/images/accepted.png) no-repeat right top;
@@ -439,13 +427,13 @@ tr:nth-child(odd) {background: #FFF}
 	margin-top: 3px;
 }
 #new_answer, #new_comment{
-	padding:10px 0 0;
+	padding:0 0 10px;
 }
 #new_comment{
 	display:none;
 }
 .comments{
-	margin:10px 0 0;
+	margin:10px 0;
 	font-size:12px;
 }
 .comment:last-child{
@@ -454,7 +442,10 @@ tr:nth-child(odd) {background: #FFF}
 .comment{
 	background:url(/images/comment.gif) no-repeat 0 3px;
 	padding-left:20px;
-	padding-bottom:10px;
+	padding-top:10px;
+}
+.comment:first-child{
+	padding-top:0;
 }
 .comment .post_text{
 	font-size:12px;
@@ -465,3 +456,34 @@ tr:nth-child(odd) {background: #FFF}
 #role_manage, #recharge{
 	width:8em;
 }
+a#feedback{
+	background: #1B97F2 url(/images/feedback.png) no-repeat -2px 50%;
+	display: block;
+	height: 90px;
+	left: 0px;
+	margin-top: -45px;
+	position: fixed;
+	top: 40%;
+	width: 25px;
+	z-index: 100001;
+}
+a#feedback:hover{
+	background-color: #06C;
+	border: 1px #06C;
+	border-left: none;
+	cursor: pointer;
+}
+
+.dialog{border: 1px solid #ccc;color: #333;width: 400px;margin: 30px auto;text-align: left;border-radius:10px;-moz-border-radius:10px;}
+.dialog fieldset{padding: 30px 30px 0px;}
+fieldset .field{margin-bottom: 15px;}
+.dialog input[type="text"], input[type="password"] {width:325px;padding: 7px;border-radius:3px;-moz-border-radius:3px;}
+.dialog .submitSet{padding: 0px 30px 30px;}
+.msg{margin-top: 20px;padding: 15px 30px;text-align: center;text-decoration: none;width: 340px;border-radius:10px;-moz-border-radius:10px;}
+.msg a{font-size:16px;}
+
+.cool{color:#999!important;}
+.warm{color:#9b764f!important;}
+.hot{color:#cf7721!important;}
+.supernova{color:#fe7a15!important;}
+.warning{color:red!important;}

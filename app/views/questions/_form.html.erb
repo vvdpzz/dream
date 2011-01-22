@@ -2,6 +2,7 @@
 	<%= form_for(@question) do |f| %>
 		<h3><%= t('short') %> <span class="small_text"><%= t('words_limited') %></span></h3>
 		<%= f.text_area :short %>
+		<span class="text-counter"></span>
 		<h3><%= t('long') %> <span class="small_text"><%= t('long_additional') %></span></h3>
 		<%= f.text_area :long %>
 		<%= f.check_box :anonymous %> <%= f.label t 'anonymous_ask' %>

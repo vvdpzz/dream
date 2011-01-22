@@ -1,4 +1,7 @@
-<div class="main">
+<div class="subheader">
+	<h1><%= cny(@question.sum) %></h1>
+</div>
+<div id="content">
 	<%= div_for @question do %>
 		<div class="post">
 			<div class="post_row">
@@ -25,15 +28,13 @@
 		</div>
 	<% end -%>
 	<div id="answers">
-		<h1><%= @question.answers.count %> <%= t 'answers_count' %></h1>
+		<div class="subheader">
+			<h1><%= @question.answers.count %> <%= t 'answers_count' %></h1>
+		</div>
 		<%= render :partial => "partials/answer", :collection => @question.answers %>
 	</div>
 	<% if !@question.answers.where(:user_id => current_user.id).present? and @question.user != current_user %>
 		<h1>Send Your Answer</h1>
 		<%= render @answer = @question.answers.build %>
 	<% end %>
-</div>
-<div class="additional">
-	<span class="item_reward_word"><%= t('reward_word') %></span>
-	<span class="item_reward"><%= cny(@question.sum) %></span>
 </div>
