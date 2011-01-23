@@ -1,6 +1,6 @@
 Dream::Application.routes.draw do
     
-  resources :feedbacks
+    resources :feedbacks
 
     match '/questions/asked' => "questions#asked", :as => :asked
     match '/questions/answered' => "questions#answered", :as => :answered
