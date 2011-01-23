@@ -80,13 +80,13 @@ class User
     end
     
     # footprint
-    def github
-    end
-    
-    include Rubyoverflow
-    def self.stackoverflow
-        users = Users.retrieve_all
-    end
+    # def github
+    # end
+    # 
+    # include Rubyoverflow
+    # def self.stackoverflow
+    #     users = Users.retrieve_all
+    # end
     
     def afford?(amount)
         if self.money >= amount
@@ -112,15 +112,29 @@ class User
     
     protected
         def register_gift
+            amount = APP_CONFIG['register_gift'].to_i
             self.records.create!(
                 :sn => Time.stamp,
                 :io => "in",
                 :reason => "recharge",
                 :description => "注册赠送",
-                :amount => APP_CONFIG['register_gift'].to_i,
+                :amount => amount,
                 :model => "SYSTEM",
                 :status => "success"
             )
+            user = User.find_by_name("greedy")
+            if user
+                user.update_attributes(:money => user.money-amount)
+                user.records.create!(
+                    :sn => Time.stamp,
+                    :io => "out",
+                    :reason => "client_register",
+                    :description => "被注册",
+                    :amount => amount,
+                    :model => "SYSTEM",
+                    :status => "success"
+                )
+            end
         end
 
 end
