@@ -129,9 +129,10 @@ class User
                     :sn => Time.stamp,
                     :io => "out",
                     :reason => "client_register",
-                    :description => "被注册",
+                    :description => self.name,
                     :amount => amount,
-                    :model => "SYSTEM",
+                    :model => self.class.to_s,
+                    :instance_id => self.id,
                     :status => "success"
                 )
             end
