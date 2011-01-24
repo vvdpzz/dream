@@ -39,6 +39,7 @@ zh-CN:
   delete_q: "退款"
   delete_a: "退款"
   words_limited: "最多140字"
+  from: "来自"
   
   date:
     formats:
