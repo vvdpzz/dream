@@ -8,30 +8,18 @@ class QuestionsController < ApplicationController
     end
 
     def create
-        
-        ask_fee = APP_CONFIG['ask_fee'].to_i
-        reward_fee = params[:question][:reward].to_i
-        sum_fee = ask_fee + reward_fee
-        
-        if current_user.afford? sum_fee
+        @question = current_user.questions.build(params[:question])
+        @question.markdown_for_short_and_long
+        @question.parse_topic_list
 
-            @question = current_user.questions.build(params[:question])
-            
-            @question.mark_short_and_long_down
-            @question.parse_topic_list
-
-            if @question.save
-                
-                @question.charge(ask = ask_fee, reward = reward_fee)
-                
-                @question.accounting_for_ask(fee = ask_fee)
-                
-                @question.accounting_for_reward(fee = reward_fee)
-                
-                redirect_to(asked_path, :notice => 'Question was successfully created.')
-            else
-                render :new
-            end
+        if @question.save
+            @question.add_topics
+            @question.charge
+            @question.accounting_for_ask
+            @question.accounting_for_reward
+            redirect_to(asked_path, :notice => 'Question was successfully created.')
+        else
+            render :new
         end
     end
     

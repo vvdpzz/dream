@@ -10,8 +10,7 @@ class Question
 
     # description of question, long is optional
     field :short
-    validates_presence_of :short
-    validates_length_of :short, :within => 1..140, :on => :create, :message => "must be present"
+    validates_length_of :short, :within => 15..140, :on => :create, :message => "must be within 15..140 words"
     field :long
 
     # markdown
@@ -23,7 +22,9 @@ class Question
 
     # topic list
     field :topic_list
-        
+        validate :topics_count_must_within_one_to_five
+    
+    validate :must_could_afford
 
     # Money
     field :bucket, :type => Integer, :default => 0
@@ -50,60 +51,88 @@ class Question
     references_and_referenced_in_many :topics, :inverse_of => :questions
     references_many :answers
 
-    def mark_short_and_long_down
+    def markdown_for_short_and_long
         self.markdown4short = BlueCloth.new(self.short).to_html
         self.markdown4long  = BlueCloth.new(self.long).to_html
-        excerpt_short_markdown
+        self.excerpt = truncate(self.markdown4short.gsub(/<\/?[^>]*>/,  ""), :length => 140)
     end
 
     def parse_topic_list
         taglist = ActsAsTaggableOn::TagList.from self.topic_list
         self.topic_list = taglist.to_s
+    end
+    
+    def add_topics
+        taglist = ActsAsTaggableOn::TagList.from self.topic_list
         taglist.each do |tag|
             topic = Topic.find_or_create_by(:name => tag)
             self.topics << topic
             self.user.topics << topic
         end
     end
+    
+    def charge
+        ask = APP_CONFIG['ask_fee'].to_i
+        sum = ask + self.reward
+        user_out sum
+        calc_sum_and_update_max
+    end
 
-    def accounting_for_ask(fee)
+    def user_out(amount)
+        self.user.update_attributes(:money => self.user.money - amount)
+    end
+    
+    def calc_sum_and_update_max
+        current_sum = self.bucket + self.reward
+        if self.sum != current_sum
+            self.update_attributes(:sum => current_sum)
+            if self.sum > self.max
+                self.update_attributes(:max => current_sum)
+            end
+        end
+    end
+
+    def accounting_for_ask
+        fee = APP_CONFIG['ask_fee'].to_i
         self.user.records.create!(
-        :sn => Time.stamp,
-        :io => "out",
-        :reason => "ask",
-        :description => excerpt_record_description(self.markdown4short),
-        :amount => fee,
-        :model => self.class.to_s,
+        :sn          => Time.stamp,
+        :io          => "out",
+        :reason      => "ask",
+        :description => truncate(self.excerpt),
+        :amount      => fee,
+        :model       => self.class.to_s,
         :instance_id => self.id,
-        :status => "success"
+        :status      => "success"
         )
         user = User.find_by_name("greedy")
-        user.money = user.money + fee
+        user.update_attributes(:money => user.money + fee)
+        
         user.records.create!(
-        :sn => Time.stamp,
-        :io => "in",
-        :reason => "ask",
-        :description => excerpt_record_description(self.markdown4short),
-        :amount => fee,
-        :model => self.class.to_s,
+        :sn          => Time.stamp,
+        :io          => "in",
+        :reason      => "ask",
+        :description => truncate(self.excerpt),
+        :amount      => fee,
+        :model       => self.class.to_s,
         :instance_id => self.id,
-        :status => "success"
+        :status      => "success"
         )
-        user.save
     end
 
-    def accounting_for_reward(fee)
+    def accounting_for_reward
+        fee = self.reward
         self.user.records.create!(
-        :sn => Time.stamp,
-        :io => "out",
-        :reason => "reward",
-        :description => excerpt_record_description(self.markdown4short),
-        :amount => fee,
-        :model => self.class.to_s,
+        :sn          => Time.stamp,
+        :io          => "out",
+        :reason      => "reward",
+        :description => truncate(self.excerpt),
+        :amount      => fee,
+        :model       => self.class.to_s,
         :instance_id => self.id,
-        :status => "pending"
+        :status      => "pending"
         )
     end
+
     
     def accounting_for_destroy_question(fee)
         self.user.records.create!(
@@ -116,45 +145,25 @@ class Question
             :status => "success"
         )
     end
-
-    def charge(ask, reward)
-        user_give ask+reward
-        self_receive reward
-        calc_sum_and_update_max
-    end
-
-    def user_give(amount)
-        charged = self.user.money - amount
-        self.user.update_attributes(:money => charged) if charged >= 0
-    end
-
-    def self_receive(reward)
-        self.update_attributes(:reward => reward)
-    end
-
-
-    def calc_sum_and_update_max
-        current_sum = self.bucket + self.reward
-        if self.sum != current_sum
-            self.update_attributes(:sum => current_sum)
-            if self.sum > self.max
-                self.update_attributes(:max => current_sum)
-            end
-        end
-    end
-    
-    def excerpt_short_markdown
-        excerpt = truncate(self.markdown4short.gsub(/<\/?[^>]*>/,  ""), :length => 140)
-        self.update_attributes(:excerpt => excerpt)
-    end
-    
-    def excerpt_record_description(string)
-        truncate(string.gsub(/<\/?[^>]*>/,  ""), :length => 30)
-    end
     
     def truncate(text, options = {})
         options.reverse_merge!(:length => 30)
         text.truncate(options.delete(:length), options) if text
+    end
+    
+    def topics_count_must_within_one_to_five
+        list = ActsAsTaggableOn::TagList.from self.topic_list
+        if list.count > 5
+            errors.add(:topic_list, "can not be more than 5 tags")
+        elsif list.count == 0
+            errors.add(:tag_list, "must have 1 tag at least")
+        end
+    end
+    
+    def must_could_afford
+        if self.user.money < self.reward + APP_CONFIG['ask_fee'].to_i
+            errors.add(:reward, "you do not have enough money to pay, please recharge.")
+        end
     end
 
 end
