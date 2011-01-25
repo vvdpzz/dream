@@ -27,7 +27,7 @@
 	<div id="container">
 		<% if user_signed_in? %>
 			<div id="header">
-				<%= tabs_tag(:builder => NavTabBuilder, :open_tabs => { :class => "nav" }) do |tab| %>
+				<%= tabs_tag(:builder => ApplicationHelper::NavTabBuilder, :open_tabs => { :class => "nav" }) do |tab| %>
 				<%= tab.questions 'Questions', questions_path %>
 				<%= tab.interesting 'Interesting', interesting_path %>
 				<%= tab.messages 'Messages', messages_path %>
