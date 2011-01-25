@@ -21,7 +21,7 @@
 		<h3><%= t('topic') %></h3>
 		<%= f.text_field :topic_list, :autocomplete => autocomplete_topic_name_topics_path, :delimiter => ",", :class => "autocomplete" %>
 		<h3><%= t('add_reward') %> <span class="small_text"><%= t('current_money') %><%= current_user.money %></span></h3>
-		<%= f.text_field :reward, :class => "autocomplete" %>
+		<%= f.text_field :reward, :autocomplete => false, :class => "autocomplete" %>
 		<%= f.submit t('send'), :class => "submit" %>
 	<% end %>
 </div>
