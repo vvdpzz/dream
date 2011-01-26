@@ -11,7 +11,7 @@ class User
     # user's name
     field :name
     validates_presence_of :name, :on => :create, :message => "can't be blank"
-    validates_uniqueness_of :name, :email, :case_sensitive => false, :on => :create, :message => "must be unique"
+    validates_uniqueness_of :name, :case_sensitive => false, :on => :create, :message => "must be unique"
     attr_accessible :name, :email, :password, :password_confirmation
     
     # user's gender(String)
