@@ -51,7 +51,7 @@ module Dream
 
     # JavaScript files you want as :defaults (application.js is always included).
     # config.action_view.javascript_expansions[:defaults] = %w(http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js rails http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.min.js application)
-    config.action_view.javascript_expansions[:defaults] = %w(jquery.min.js rails jquery-ui.min.js)
+    config.action_view.javascript_expansions[:defaults] = %w(jquery.min.js rails jquery-ui.min.js autocomplete-rails.js)
     
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
