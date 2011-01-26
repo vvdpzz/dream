@@ -2,8 +2,8 @@ set :application, "dream"
 set :repository,  "git@github.com:vvdpzz/dream.git"
 
 set :scm, "git"
-set :user, "deployer"
-set :scm_passphrase, "deployer930514"
+set :user, "vvdpzz"
+set :scm_passphrase, "930514"
 
 role :web, "http://173.255.204.118"                     # Your HTTP server, Apache/etc
 role :app, "http://173.255.204.118:3000"                # This may be the same as your `Web` server

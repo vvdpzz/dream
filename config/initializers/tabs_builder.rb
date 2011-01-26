@@ -13,6 +13,8 @@
 #
 #++
 
+require "tabs_on_rails"
+
 
 module TabsOnRails
   class Tabs
