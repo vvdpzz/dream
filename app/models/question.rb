@@ -71,9 +71,8 @@ class Question
         end
     end
     
-    def charge
-        ask = APP_CONFIG['ask_fee'].to_i
-        sum = ask + self.reward
+    def charge(ask = APP_CONFIG['ask_fee'].to_i, reward = self.reward)
+        sum = ask + reward
         user_out sum
         calc_sum_and_update_max
     end
@@ -119,8 +118,7 @@ class Question
         )
     end
 
-    def accounting_for_reward
-        fee = self.reward
+    def accounting_for_reward(fee = self.reward)
         self.user.records.create!(
         :sn          => Time.stamp,
         :io          => "out",

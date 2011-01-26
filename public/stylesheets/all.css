@@ -116,7 +116,7 @@ ul.nav a{
 ul.nav li:hover{
 	background-color: #F90;
 }
-ul.nav li.active{
+ul.nav li.current{
 	background: #F90;
 }
 

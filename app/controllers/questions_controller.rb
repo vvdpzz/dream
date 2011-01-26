@@ -17,7 +17,7 @@ class QuestionsController < ApplicationController
             @question.charge
             @question.accounting_for_ask
             @question.accounting_for_reward
-            redirect_to(asked_path, :notice => 'Question was successfully created.')
+            redirect_to(@question, :notice => 'Question was successfully created.')
         else
             render :new
         end
@@ -28,17 +28,19 @@ class QuestionsController < ApplicationController
         new_reward = params[:question][:reward].to_i
         offset = new_reward - @question.reward
         if offset > 0
+            @question.charge(reward = offset)
             @question.accounting_for_reward(fee = offset)
-        end
-        if offset < 0
+        else
             params[:question][:reward] = @question.reward
         end
         
         if @question.update_attributes(params[:question])
-            @question.mark_short_and_long_down
+            @question.markdown_for_short_and_long
             @question.parse_topic_list
-            @question.save
-            redirect_to @question
+            if @question.save
+                @question.add_topics
+                redirect_to @question
+            end
         else
             render :edit
         end
