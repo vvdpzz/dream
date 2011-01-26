@@ -266,6 +266,7 @@ zh-CN:
       too_long: "过长（最长为 %{count} 个字符）"
       too_short: "过短（最短为 %{count} 个字符）"
       wrong_length: "长度非法（必须为 %{count} 个字符）"
+      taken: "已经存在"
       not_a_number: "不是数字"
       not_an_integer: "必须是整数"
       greater_than: "必须大于 %{count}"
