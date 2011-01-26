@@ -11,7 +11,7 @@ require File.expand_path('../boot', __FILE__)
 # end
 
   ENV['MONGOID_HOST'] = "localhost"
-  ENV['MONGOID_PORT'] = "27017"
+  ENV['MONGOID_PORT'] = "28017"
   ENV['MONGOID_USERNAME'] = "mongodb"
   ENV['MONGOID_PASSWORD'] = ""
   ENV['MONGOID_DATABASE'] = "dream"
