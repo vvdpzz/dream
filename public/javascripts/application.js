@@ -1,4 +1,22 @@
 $.fn.extend({
+	fadeOutAndRemove: function(a) {
+        return this.each(function() {
+            var c = $(this);
+            c.fadeOut("fast",
+            function() {
+                c.remove()
+            })
+        })
+    },
+	showErrorPopup: function(d, e) {
+	    var f = $('<div class="error-notification supernovabg"><h2>' + d + "</h2>" + (e ? "": "(click on this box to dismiss)") + "</div>");
+	    var g = function() {
+	        f.fadeOutAndRemove()
+	    };
+	    $(this).append(f);
+	    f.click(g).fadeIn("fast");
+	    setTimeout(g, (e ? Math.max(2500, d.length * 40) : 1000 * 30))
+	},
 	charCounter : function (a)
 	{
 		return this.each(function ()
@@ -40,8 +58,7 @@ $(document).ready(function() {
     var p = function(w) {
         u = w
     };
-	v = $("#question_short");
-	v.charCounter({
+	$("#question_short").charCounter({
 	    min: 15,
 	    max: 140,
 	    setIsValid: p

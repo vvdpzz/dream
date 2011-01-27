@@ -40,6 +40,7 @@ zh-CN:
   delete_a: "退款"
   words_limited: "最多140字"
   from: "来自"
+  client_register: "用户注册奖励"
   
   date:
     formats:

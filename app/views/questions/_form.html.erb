@@ -1,5 +1,17 @@
 <div id="content">
 	<%= form_for(@question) do |f| %>
+		<% if @question.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+	      <ul>
+	      <% @question.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
+	
 		<h3><%= t('short') %> <span class="small_text"><%= t('words_limited') %></span></h3>
 		<%= f.text_area :short %>
 		<span class="text-counter"></span>
