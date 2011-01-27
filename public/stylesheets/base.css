@@ -123,7 +123,7 @@ ul.nav li.current{
 .subheader{clear:both;border-bottom:1px solid #d0def2;height:34px;margin-bottom:15px;}
 .subheader > h1{float:left;line-height:34px;margin:0;font-weight:normal;}
 
-.autocomplete{
+.autocomplete, .tf{
 	border:1px solid #ccc;
 	padding:3px;
 	font-size:14px;

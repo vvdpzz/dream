@@ -1,9 +1,4 @@
 class Question
-    
-    # FIXME: short's length should within 10..140
-    
-    
-    # include ActionView::Helpers::TextHelper
 
     include Mongoid::Document
     include Mongoid::Timestamps
@@ -78,7 +73,8 @@ class Question
     end
 
     def user_out(amount)
-        self.user.update_attributes(:money => self.user.money - amount)
+        user = User.find self.user.id
+        user.update_attributes(:money => self.user.money - amount)
     end
     
     def calc_sum_and_update_max

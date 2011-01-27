@@ -15,7 +15,7 @@
 */
 
 $(document).ready(function(){
-	$('input[data-autocomplete]').railsAutocomplete();
+	$('.autocomplete').railsAutocomplete();
 });
 
 (function(jQuery)
