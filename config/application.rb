@@ -10,12 +10,6 @@ require File.expand_path('../boot', __FILE__)
 #   ENV['MONGOID_DATABASE'] = mongo_uri.path.gsub('/', '')
 # end
 
-# ENV['MONGOID_HOST'] = "localhost"
-# ENV['MONGOID_PORT'] = "27017"
-# ENV['MONGOID_USERNAME'] = "mongodb"
-# ENV['MONGOID_PASSWORD'] = ""
-# ENV['MONGOID_DATABASE'] = "dream"
-
 require 'mongoid/railtie'
 require "action_controller/railtie"
 require "action_mailer/railtie"

@@ -4,9 +4,7 @@ module ActsAsTaggableOn
         def self.from(string)
             
             string.gsub!(/，/,',')
-            
-            puts string
-            
+                        
             glue   = delimiter.ends_with?(" ") ? delimiter : "#{delimiter} "
             string = string.join(glue) if string.respond_to?(:join)
 

@@ -88,14 +88,6 @@ class User
     #     users = Users.retrieve_all
     # end
     
-    def afford?(amount)
-        if self.money >= amount
-            true
-        else
-            false
-        end
-    end
-    
     def accounting_for_recharge(amount)
         self.money += amount
         self.save
