@@ -1,9 +1,4 @@
 class Question
-    
-    # FIXME: short's length should within 10..140
-    
-    
-    # include ActionView::Helpers::TextHelper
 
     include Mongoid::Document
     include Mongoid::Timestamps
@@ -71,15 +66,14 @@ class Question
         end
     end
     
-    def charge
-        ask = APP_CONFIG['ask_fee'].to_i
-        sum = ask + self.reward
+    def charge(ask = APP_CONFIG['ask_fee'].to_i, reward = self.reward)
+        sum = ask + reward
         user_out sum
         calc_sum_and_update_max
     end
 
     def user_out(amount)
-        user = self.user
+        user = User.find self.user.id
         user.update_attributes(:money => self.user.money - amount)
     end
     
@@ -120,8 +114,7 @@ class Question
         )
     end
 
-    def accounting_for_reward
-        fee = self.reward
+    def accounting_for_reward(fee = self.reward)
         self.user.records.create!(
         :sn          => Time.stamp,
         :io          => "out",

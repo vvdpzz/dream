@@ -1,14 +1,14 @@
 require File.expand_path('../boot', __FILE__)
 
-require 'uri'
-if ENV['MONGOHQ_URL']
-  mongo_uri = URI.parse(ENV['MONGOHQ_URL'])
-  ENV['MONGOID_HOST'] = mongo_uri.host
-  ENV['MONGOID_PORT'] = mongo_uri.port.to_s
-  ENV['MONGOID_USERNAME'] = mongo_uri.user
-  ENV['MONGOID_PASSWORD'] = mongo_uri.password
-  ENV['MONGOID_DATABASE'] = mongo_uri.path.gsub('/', '')
-end
+# require 'uri'
+# if ENV['MONGOHQ_URL']
+#   mongo_uri = URI.parse(ENV['MONGOHQ_URL'])
+#   ENV['MONGOID_HOST'] = mongo_uri.host
+#   ENV['MONGOID_PORT'] = mongo_uri.port.to_s
+#   ENV['MONGOID_USERNAME'] = mongo_uri.user
+#   ENV['MONGOID_PASSWORD'] = mongo_uri.password
+#   ENV['MONGOID_DATABASE'] = mongo_uri.path.gsub('/', '')
+# end
 
 require 'mongoid/railtie'
 require "action_controller/railtie"
@@ -45,7 +45,7 @@ module Dream
 
     # JavaScript files you want as :defaults (application.js is always included).
     # config.action_view.javascript_expansions[:defaults] = %w(http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js rails http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.min.js application)
-    config.action_view.javascript_expansions[:defaults] = %w(jquery.min.js rails jquery-ui.min.js application)
+    config.action_view.javascript_expansions[:defaults] = %w(jquery.min.js rails jquery-ui.min.js autocomplete-rails.js)
     
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"

@@ -1,5 +1,5 @@
 <%
-	if answer.id.to_s == answer.question.accepted_answer
+	if answer.id == answer.question.accepted_answer
 		accepted = "accepted"
 	else
 		accepted = ""

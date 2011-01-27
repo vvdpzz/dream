@@ -13,15 +13,15 @@
 	  <% end %>
 	
 		<h3><%= t('short') %> <span class="small_text"><%= t('words_limited') %></span></h3>
-		<%= f.text_area :short %>
+		<%= f.text_area :short, :placeholder => "Keep short" %>
 		<span class="text-counter"></span>
 		<h3><%= t('long') %> <span class="small_text"><%= t('long_additional') %></span></h3>
-		<%= f.text_area :long %>
+		<%= f.text_area :long, :placeholder => "Optional, add more detail as you want" %>
 		<%= f.check_box :anonymous %> <%= f.label t 'anonymous_ask' %>
 		<h3><%= t('topic') %></h3>
 		<%= f.text_field :topic_list, :autocomplete => autocomplete_topic_name_topics_path, :delimiter => ",", :class => "autocomplete" %>
 		<h3><%= t('add_reward') %> <span class="small_text"><%= t('current_money') %><%= current_user.money %></span></h3>
-		<%= f.text_field :reward, :class => "autocomplete" %>
+		<%= f.text_field :reward, :class => "tf" %>
 		<%= f.submit t('send'), :class => "submit" %>
 	<% end %>
 </div>

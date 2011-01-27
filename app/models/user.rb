@@ -10,8 +10,8 @@ class User
 
     # user's name
     field :name
-    validates_presence_of :name
-    validates_uniqueness_of :name, :email, :case_sensitive => false
+    validates_presence_of :name, :on => :create, :message => "can't be blank"
+    validates_uniqueness_of :name, :case_sensitive => false, :on => :create, :message => "must be unique"
     attr_accessible :name, :email, :password, :password_confirmation
     
     # user's gender(String)
@@ -87,14 +87,6 @@ class User
     # def self.stackoverflow
     #     users = Users.retrieve_all
     # end
-    
-    def afford?(amount)
-        if self.money >= amount
-            true
-        else
-            false
-        end
-    end
     
     def accounting_for_recharge(amount)
         self.money += amount
