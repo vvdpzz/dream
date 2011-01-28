@@ -19,7 +19,7 @@ class Question
     field :topic_list
         validate :topics_count_must_within_one_to_five
     
-    validate :must_could_afford
+    validate :must_could_afford, :on => :create
 
     # Money
     field :bucket, :type => Integer, :default => 0
