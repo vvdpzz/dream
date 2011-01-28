@@ -12,10 +12,8 @@ class AnswersController < ApplicationController
                 @answer.accounting_for_answer(answer_fee)
                 
                 if question.answers.count == 1
-                    question.answer_stats = "answered"
+                    question.update_attribute(:answer_stats, "answered")
                 end
-                current_user.save
-                question.save
                 Notification.write(me = @answer.question.user, friend = current_user, method = "answered", m0del = @answer.question, markdown = @answer.question.excerpt)
             end
         end

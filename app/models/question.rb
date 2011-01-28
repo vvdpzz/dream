@@ -73,16 +73,16 @@ class Question
     end
 
     def user_out(amount)
-        user = User.find self.user.id
-        user.update_attributes(:money => self.user.money - amount)
+        # user = User.find self.user.id
+        user.update_attribute(:money, self.user.money - amount)
     end
     
     def calc_sum_and_update_max
         current_sum = self.bucket + self.reward
         if self.sum != current_sum
-            self.update_attributes(:sum => current_sum)
+            self.update_attribute(:sum, current_sum)
             if self.sum > self.max
-                self.update_attributes(:max => current_sum)
+                self.update_attribute(:max, current_sum)
             end
         end
     end

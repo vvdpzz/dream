@@ -27,8 +27,9 @@ class Answer
           :instance_id => self.id,
           :status => "success"
       )
-      self.user.money -= answer_fee
-      self.question.bucket += answer_fee
+      self.user.update_attribute(:money, self.user.money - answer_fee)
+      self.question.update_attribute(:bucket, self.question.bucket + answer_fee)
+      self.question.calc_sum_and_update_max
   end
   
   def accounting_for_accept(fee)
