@@ -7,7 +7,7 @@
 			<tr>
 				<%= form_tag({:controller => "superusers", :action => "recharge"}, :remote => true ) do %>
 				<td>
-					<%= text_field_tag :name, {}, :autocomplete => autocomplete_user_name_users_path, :class => "auto" %>
+					<%= text_field_tag :name, {}, :autocomplete => autocomplete_user_name_users_path, :class => "auto autocomplete" %>
 				</td>
 				<td>
 					<%= text_field_tag :amount, {}, :class => "auto" %>
@@ -26,7 +26,7 @@
 			<tr>
 				<%= form_tag({:controller => "superusers", :action => "role_manage"}, :remote => true ) do %>
 				<td>
-					<%= text_field_tag :name, {}, :autocomplete => autocomplete_user_name_users_path, :class => "auto" %>
+					<%= text_field_tag :name, {}, :autocomplete => autocomplete_user_name_users_path, :class => "auto autocomplete" %>
 				</td>
 				<td>
 					<% roles = ["root", "moderator", "author"] %>

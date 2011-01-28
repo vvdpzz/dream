@@ -89,8 +89,7 @@ class User
     # end
     
     def accounting_for_recharge(amount)
-        self.money += amount
-        self.save
+        self.update_attribute(:money, self.money + amount)
         self.records.create!(
             :sn => Time.stamp,
             :io => "in",
@@ -117,7 +116,7 @@ class User
             amount = APP_CONFIG['register_gift'].to_i
             user = User.find_by_name("greedy")
             if user
-                user.update_attributes(:money => user.money-amount)
+                user.update_attribute(:money, user.money - amount)
                 user.records.create!(
                     :sn => Time.stamp,
                     :io => "out",
