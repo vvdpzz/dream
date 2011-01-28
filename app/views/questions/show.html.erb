@@ -11,7 +11,9 @@
 				<div><%= safe_html @question.markdown4short %></div>
 				<div><%= safe_html @question.markdown4long %></div>
 			</div>
-			<%= render "partials/small_topics", :topics => @question.topics %>
+			<div class="small_topics">
+			<%= @question.topics.map {|topic| content_tag(:span, topic.name, :class => "item_topic")}.to_sentence.html_safe %>
+			</div>
 			<div class="post_row">
 				<div class="operation">
 					<%= link_to t('edit'), [:edit,@question] %>
