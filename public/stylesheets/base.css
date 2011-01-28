@@ -436,16 +436,13 @@ tr:nth-child(odd) {background: #FFF}
 	margin:10px 0;
 	font-size:12px;
 }
-.comment:last-child{
-	padding-bottom:0;
+.comment:first-child{
+	margin-top:0;
 }
 .comment{
 	background:url(/images/comment.gif) no-repeat 0 3px;
 	padding-left:20px;
-	padding-top:10px;
-}
-.comment:first-child{
-	padding-top:0;
+	margin-top:5px;
 }
 .comment .post_text{
 	font-size:12px;
