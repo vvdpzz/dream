@@ -12,7 +12,7 @@ class Feedback
   field :anonymous, :type => Boolean, :default => false
   
   def excerpt_short_markdown
-      excerpt = truncate(self.body.gsub(/<\/?[^>]*>/,  ""), :length => 140)
+      excerpt = truncate(self.body.gsub(/<\/?[^>]*>/,  ""), :length => 30)
       self.update_attributes(:excerpt => excerpt)
   end
   

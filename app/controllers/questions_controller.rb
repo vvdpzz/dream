@@ -24,7 +24,7 @@ class QuestionsController < ApplicationController
     end
     
     def update
-        @question = Question.find params[:id]
+        @question = Question.find(params[:id])
         new_reward = params[:question][:reward].to_i
         offset = new_reward - @question.reward
         if offset > 0

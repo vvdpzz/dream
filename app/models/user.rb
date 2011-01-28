@@ -114,6 +114,7 @@ class User
                 :model => "SYSTEM",
                 :status => "success"
             )
+            amount = APP_CONFIG['register_gift'].to_i
             user = User.find_by_name("greedy")
             if user
                 user.update_attributes(:money => user.money-amount)
@@ -129,5 +130,4 @@ class User
                 )
             end
         end
-
 end
