@@ -66,6 +66,12 @@ class Question
         end
     end
     
+    def add_topics_to(user)
+        self.topics.each do |topic|
+            user.topics << topic
+        end
+    end
+    
     def charge(ask = APP_CONFIG['ask_fee'].to_i, reward = self.reward)
         sum = ask + reward
         user_out sum
