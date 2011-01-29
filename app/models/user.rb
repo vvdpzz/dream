@@ -26,7 +26,7 @@ class User
     # user's money, we give 100 cents as registration gift
     field :money, :type => Integer, :default => 100
     
-    # attr_accessible :money
+    attr_accessible :money
     
     # user's role
     field :roles_mask, :type => Integer, :default => 4

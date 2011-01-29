@@ -80,6 +80,14 @@ zh-CN:
   words_limited: "最多140字"
   from: "来自"
   client_register: "用户注册奖励"
+  gender: "性别"
+  age: "年龄"
+  roles: "角色"
+  author: "作者"
+  moderator: "版主"
+  root: "管理员"
+  join_time: "加入时间"
+  recent_login: "最近登录"
   
   date:
     formats:

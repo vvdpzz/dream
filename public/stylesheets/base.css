@@ -272,6 +272,9 @@ html[xmlns] .clearfix {
 	float:left;
 	margin:5px 10px;
 }
+#profile tr:nth-child(even) {background: #fff}
+#profile tr:nth-child(odd) {background: #FFF}
+
 tr:nth-child(even) {background: #eee}
 tr:nth-child(odd) {background: #FFF}
 .superuser_td{
@@ -288,6 +291,7 @@ tr:nth-child(odd) {background: #FFF}
 	color:gray;
 }
 .user_left{
+	float:left;
 	width:128px;
 }
 .gravatar{
@@ -298,6 +302,9 @@ tr:nth-child(odd) {background: #FFF}
 	font-size:20px;
 	text-align:center;
 	padding:10px 0;
+}
+.user_right{
+	margin-left:230px;
 }
 .time{
 	float:right;

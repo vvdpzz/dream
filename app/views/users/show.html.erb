@@ -8,6 +8,42 @@
 		</div>
 		<div class="money"><%= cny @user.money %></div>
 	</div>
+	<div class="user_right">
+		<table id="profile">
+			<tbody>
+				<tr>
+					<td>E-Mail</td>
+					<td><%= @user.email %></td>
+				</tr>
+				<tr>
+					<td><%= t 'gender' %></td>
+					<td><%= @user.gender %></td>
+				</tr>
+				<tr>
+					<td><%= t 'age' %></td>
+					<td><%= Time.now.year - @user.birthday.year if @user.birthday %></td>
+				</tr>
+				<tr>
+					<td><%= t 'roles' %></td>
+					<td><% if @user.roles %>
+							<% @user.roles.each do |role| %>
+							<span class="bullet"> · </span>
+							<%= t "#{role}" %>
+							<% end %>
+						<% end %>
+					</td>
+				</tr>
+				<tr>
+					<td><%= t 'join_time' %></td>
+					<td><%= time_ago_in_words @user.created_at %></td>
+				</tr>
+				<tr>
+					<td><%= t 'recent_login' %></td>
+					<td><%= time_ago_in_words @user.current_sign_in_at %></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </div>
 <div id="main">
 	<h1>Records</h1>
