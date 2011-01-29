@@ -11,6 +11,8 @@ class AnswersController < ApplicationController
             if @answer.save
                 @answer.accounting_for_answer(answer_fee)
                 
+                @answer.question.add_topics_to(@answer.user)
+                
                 if question.answers.count == 1
                     question.update_attribute(:answer_stats, "answered")
                 end

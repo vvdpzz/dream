@@ -19,7 +19,7 @@ class Question
     field :topic_list
         validate :topics_count_must_within_one_to_five
     
-    validate :must_could_afford
+    validate :must_could_afford, :on => :create
 
     # Money
     field :bucket, :type => Integer, :default => 0
@@ -63,6 +63,12 @@ class Question
             topic = Topic.find_or_create_by(:name => tag)
             self.topics << topic
             self.user.topics << topic
+        end
+    end
+    
+    def add_topics_to(user)
+        self.topics.each do |topic|
+            user.topics << topic
         end
     end
     

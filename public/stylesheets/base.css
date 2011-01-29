@@ -139,7 +139,7 @@ textarea{
 .submit{
 	margin-top:5px;
 }
-.autocomplete, textarea{-webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box;}
+.autocomplete, textarea, .tf{-webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box;}
 .close-button {
     position: absolute;
     top: -3px;
