@@ -27,12 +27,12 @@
 		<% if user_signed_in? %>
 			<div id="header">
 				<%= tabs_tag(:open_tabs => { :class => "nav" }) do |tab| %>
-				<%= tab.questions 'Questions', questions_path %>
-				<%= tab.interesting 'Interesting', interesting_path %>
-				<%= tab.messages 'Messages', messages_path %>
-				<%= tab.topics 'Topics', topics_path %>
-				<%= tab.unanswered 'Unanswered', unanswered_path %>
-				<%= tab.ask 'Ask Question', new_question_path, :style => "margin-left:260px" %>
+					<%= tab.questions 'Questions', questions_path %>
+					<%= tab.interesting 'Interesting', interesting_path %>
+					<%= tab.messages 'Messages', messages_path %>
+					<%= tab.topics 'Topics', topics_path %>
+					<%= tab.unanswered 'Unanswered', unanswered_path %>
+					<%= tab.ask 'Ask Question', new_question_path %>
 				<% end %>
 			</div>
 			<div id="notify">

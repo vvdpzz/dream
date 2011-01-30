@@ -14,8 +14,8 @@ gem 'gravtastic'
 gem 'tabs_on_rails'
 
 # footprint
-gem 'hubruby'
-gem 'rubyoverflow'
+# gem 'hubruby'
+# gem 'rubyoverflow'
 
 # Use unicorn as the web server
 # gem 'unicorn'
