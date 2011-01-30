@@ -96,4 +96,9 @@ class QuestionsController < ApplicationController
             end
         end
     end
+    
+    def tagged_questions
+        @topic = Topic.find(params[:id])
+        @tagged_questions = @topic.questions
+    end
 end

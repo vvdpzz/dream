@@ -26,6 +26,8 @@ Dream::Application.routes.draw do
     end
     
     resources :messages
+    
+    match '/tagged/:id' => "questions#tagged_questions", :as => :tagged_questions
         
     devise_for :users
     resources :users do

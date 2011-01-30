@@ -12,7 +12,7 @@
 				<div><%= safe_html @question.markdown4long %></div>
 			</div>
 			<div class="small_topics">
-			<%= @question.topics.map {|topic| content_tag(:span, topic.name, :class => "item_topic")}.to_sentence.html_safe %>
+			<%= @question.topics.map {|topic| content_tag(:a, topic.name, :href => tagged_questions_path(:id => topic.id), :class => "item_topic")}.to_sentence.html_safe %>
 			</div>
 			<div class="post_row">
 				<div class="operation">
